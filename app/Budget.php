@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Budgets;
 
 use Illuminate\Database\Eloquent\Model;
 

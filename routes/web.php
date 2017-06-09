@@ -16,3 +16,12 @@ Route::get('/', function () {
 });
 
 Route::resource('budgets', 'BudgetController');
+
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
