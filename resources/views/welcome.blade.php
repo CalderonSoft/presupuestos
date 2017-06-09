@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Suite Visión Empresarial
                 </div>
 
                 <div class="links">
