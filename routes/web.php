@@ -17,15 +17,10 @@ Route::get('/', function () {
 
 Route::resource('budgets', 'BudgetController');
 
+Auth::routes();
 
-Route::get('/home', function () {
-    return view('Auth/home');
-});
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/login', function () {
-    return view('Auth/login');
-});
-
-Route::get('/register', function () {
-    return view('Auth/registro');
+Route::get('/homeT', function () {
+    return view('Auth/homeT');
 });

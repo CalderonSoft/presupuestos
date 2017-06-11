@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sistema Laravel | Log in</title>
+    <title>Presupuestando | Registro</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -30,22 +30,46 @@
         <a href="#"><b>Presupuesta</b>NDO</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        
-        <form action="{{ route('login') }}" method="post">
-            {{ csrf_field() }}  
+        <!-- <p class="login-box-msg">Registro en el sistema</p> -->
+       
+        <form action="{{ route('register') }}" method="post">
+        {{ csrf_field() }} 
+          
+          <div class="form-group has-feedback form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+            <label>Nombre</label>
+            <!-- <input type="text" class="form-control" name="name" > -->
+            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
-          <div class="form-group has-feedback form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            @if ($errors->has('name'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
 
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+          <div class="form-group has-feedback">
+              <!-- <label>Género:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                  <input type="radio" name="genre" value="hombre" checked="checked"> Hombre &nbsp;&nbsp;
+                  <input type="radio" name="genre" value="mujer"> Mujer
+          </div>  
 
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
+
+           <div class="form-group has-feedback form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+             <label>E-mail</label>
+            <!-- <input type="email" class="form-control" name="email" > -->
+            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
+
           <div class="form-group has-feedback form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <label>Contraseña</label>
             <input id="password" type="password" class="form-control" name="password" required>
 
             @if ($errors->has('password'))
@@ -55,13 +79,17 @@
             @endif
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
-         
+
+          <div class="form-group has-feedback">
+            <label>Confirmar Contraseña</label>
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+
           <div class="row">
             
-
-            
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarse</button>
             </div><!-- /.col -->
           </div>
         </form>
@@ -91,6 +119,6 @@
       });
     </script>
 
-
+    
   </body>
 </html>
