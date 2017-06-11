@@ -13,5 +13,11 @@ class BudgetController extends Controller
 		return view('budgets.create')->with(['budget' => $budget]);
 		// return view('budgets.create');
 	}
-}
 
+	public function index()
+    {
+    	$budget = Budget::orderBy('id', 'DESC')->paginate();
+    	return view('budgets.index', compact('budget'));
+    }
+
+}
