@@ -10,7 +10,7 @@ class BudgetController extends Controller
     public function create()
 	{
 		$budget = new Budget;
-		return view('budgets.create')->with(['budget' => $budget]);
+		return view('budgets.create');
 		// return view('budgets.create');
 	}
 

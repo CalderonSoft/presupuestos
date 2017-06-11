@@ -21,6 +21,3 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::name('homeT')->get('/homeT', function () {
-    return view('budgets.create');
-});
