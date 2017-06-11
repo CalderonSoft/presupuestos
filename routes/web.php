@@ -19,9 +19,13 @@ Route::resource('budgets', 'BudgetController');
 
 
 Route::get('/home', function () {
-    return view('home');
+    return view('Auth/home');
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('Auth/login');
+});
+
+Route::get('/register', function () {
+    return view('Auth/registro');
 });
