@@ -3,15 +3,15 @@
 namespace Budgets\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Budgets\Http\Budget;
+use Budgets\Budget;
 
 class BudgetController extends Controller
 {
-    //
+    public function create()
+	{
+		$budget = new Budget;
+		return view('budgets.create')->with(['budget' => $budget]);
+		// return view('budgets.create');
+	}
 }
 
-public function create()
-{
-	$budget = new Budget;
-	return view('budgets.create')->with(['budget' => $budget]);
-}
