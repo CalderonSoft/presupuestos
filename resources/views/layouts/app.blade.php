@@ -79,7 +79,7 @@
                     <img src="dist/img/{{$image}}" class="img-circle" alt="User Image">
                     <p>
                      {{ Auth::user()->name }}
-                      <small>Member since Nov. 2012</small>
+                      <small>Member {{Auth::user()->created_at->diffForHumans()}}</small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
