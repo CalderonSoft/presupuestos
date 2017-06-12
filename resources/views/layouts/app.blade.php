@@ -169,12 +169,15 @@
             <small>@yield('action')</small>
           </h1>
         </section>
-
+        
         <!-- Main content -->
         <section class="content">
           <!-- Small boxes (Stat box) -->
-          
-                   @yield('content')
+            @include('layouts._errors')
+
+            @include('layouts._messages')
+                   
+            @yield('content')
                   
 
      

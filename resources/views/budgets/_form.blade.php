@@ -9,13 +9,13 @@
 	<div class="login-box-body">
 		<!-- Title field -->
 		<div class="form-group">
-			<label for="title">Nombre</label>
-			<input type="text" name="title" class="form-control" value="{{$post->title or old('title')}}"/>
+			<label for="name">Nombre</label>
+			<input type="text" name="name" class="form-control" value="{{$budget->name or old('name')}}"/>
 		</div>
 		<!-- Description Input -->
 		<div class="form-group">
 			<label for="description">Descripción</label>
-			<textarea rows="5" name="description" class="form-control"></textarea>
+			<textarea rows="5" name="description" class="form-control">{{$budget->description or old('description')}}</textarea>
 		</div>
 
 		<div class="form-group">
