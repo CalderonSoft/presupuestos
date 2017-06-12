@@ -2,7 +2,6 @@
 
 @section('content')
 	
-<<<<<<< HEAD
 	@foreach($budgets as $budget)	
 		<div class="row">
 		  <div class="col-md-12">
@@ -11,7 +10,7 @@
 
 			<small class="pull-right">
 	        	<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-info">Edit</a>
-	        	<form  action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="budget">
+	        	<form  action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
 	            {{ csrf_field() }}
 	            {{ method_field('DELETE') }}
 	            <button type="submit" class="btn btn-danger">Delete</button>
@@ -23,17 +22,5 @@
 		  </div>
 		</div>
 	@endforeach	
-	
-=======
-	@foreach($budgets as $budget)
-		<div class="row">
-			<div class="col-md-12">
-				<h2><a href="#"> {{$budget->name}}</a>
-				</h2>
-			</div>
-		</div>
-		<hr>
-	@endforeach	
->>>>>>> fb6a38d09c930f2401b1828df45923df060576a6
 	
 @endsection

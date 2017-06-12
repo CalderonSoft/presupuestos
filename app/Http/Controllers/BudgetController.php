@@ -25,16 +25,13 @@ class BudgetController extends Controller
 		// return view('budgets.create');
 	}
 
-	public function delete(Budget $budget)
-    {
-    	
-    	
+	public function destroy(Budget $budget)
+    {    	
     	$budget->delete();
 
     	return redirect()->route('budgets.index');
 
-    	// return back()->with('info', 'El presupuesto ' . $id . ' fue eliminado');
-    	
+    	// return back()->with('info', 'El presupuesto ' . $id . ' fue eliminado');    	
     }
     
 
