@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Budget extends Model
 {
+	protected $table = 'budgets';
+
     protected $casts = ['user_id' => 'integer'];
 
     protected $fillable = ['name', 'description'];

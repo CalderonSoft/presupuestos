@@ -16,8 +16,21 @@ class BudgetController extends Controller
 
 	public function index()
     {
-    	$budget = Budget::orderBy('id', 'DESC')->paginate();
-    	return view('budgets.index', compact('budget'));
+    	$budgets = Budget::orderBy('id', 'DESC')->paginate(10);
+    	return view('budgets.index', compact('budgets'));
     }
+
+    public function delete(Budget $budget)
+    {
+    	
+    	
+    	$budget->delete();
+
+    	return redirect()->route('budgets.index');
+
+    	// return back()->with('info', 'El presupuesto ' . $id . ' fue eliminado');
+    	
+    }
+    
 
 }
