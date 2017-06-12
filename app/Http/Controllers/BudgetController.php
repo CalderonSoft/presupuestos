@@ -5,6 +5,7 @@ namespace Budgets\Http\Controllers;
 use Budgets\Budget;
 use Illuminate\Http\Request;
 use Budgets\Http\Requests\CreateBudgetRequest;
+use Budgets\Http\Requests\UpdateBudgetRequest;
 
 class BudgetController extends Controller
 {
@@ -29,7 +30,7 @@ class BudgetController extends Controller
 
 	 public function edit(Budget $budget)
 	{
-		
+
         return view('budgets.edit', compact('budget'));
 	}
 	public function store(CreateBudgetRequest $request)
@@ -42,6 +43,14 @@ class BudgetController extends Controller
 		session()->flash('message', '¡Presupuesto creado!');
 		return redirect()->route('budgets.index');
 
+	}
+
+	public function update(Budget $budget, UpdateBudgetRequest $request)
+	{
+		$budget->update(
+				$request->only('name', 'description'));
+		session()->flash('message', '¡Presupuesto actualizado!');
+		return redirect()->route('budgets.index');
 	}
 
 	public function destroy(Budget $budget)

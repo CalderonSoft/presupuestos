@@ -1,5 +1,5 @@
-@if($budget->exist)
-	<form action="{{ route('budgets.update'), ['budget' => $budget->id] }}" method="POST">
+@if($budget->exists)
+	<form action="{{ route('budgets.update', ['budget' => $budget->id]) }}" method="POST">
 	{{method_field('PUT')}}
 @else
 	<form action="{{ route('budgets.store') }}" method="POST">
