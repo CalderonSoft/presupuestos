@@ -25,6 +25,12 @@ class BudgetController extends Controller
 		// return view('budgets.create');
 	}
 
+	 public function edit(Budget $budget)
+	{
+		
+        return view('budgets.edit', compact('budget'));
+	}
+
 	public function destroy(Budget $budget)
     {    	
     	$budget->delete();

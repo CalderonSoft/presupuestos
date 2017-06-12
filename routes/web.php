@@ -14,6 +14,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 	Route::name('budgets.index')->get('budgets', 'BudgetController@index');
+	Route::name('budgets_edit')->get('budgets_edit', 'BudgetController@edit');
 	Route::name('budgets.store')->post('budgets', 'BudgetController@store');
 	Route::name('budgets_create')->get('budgets_create', 'BudgetController@create');
 
