@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
+@section('class')
+	Presupuesto
+@endsection
+
+@section('action')
+	Crear
+@endsection
+
 @section('content')
-	<div>
-		<h2>Probando</h2>
-	</div>
+	@include('budgets._form', ['budget' => $budget])
 @endsection

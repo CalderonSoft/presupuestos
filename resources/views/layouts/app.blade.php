@@ -42,7 +42,7 @@
 
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>P</b>DO</span>
           <!-- logo for regular state and mobile devices -->
@@ -146,8 +146,8 @@
                 <i class="fa fa-circle"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ route('budgets.create') }}"><i class="fa fa-circle-o"></i>Crear Presupuesto</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i>Gastos</a></li>
+                <li class="active"><a href="{{route('budgets_create')}}"><i class="fa fa-circle-o"></i>Crear Presupuesto</a></li>
+                <li><a href="{{route('budgets.index')}}"><i class="fa fa-circle-o"></i>Gastos</a></li>
               </ul>
             </li>
 

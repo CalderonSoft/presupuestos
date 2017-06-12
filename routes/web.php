@@ -10,14 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('budgets', 'BudgetController');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function(){
+	Route::name('budgets.index')->get('budgets', 'BudgetController@index');
+	Route::name('budgets.store')->post('budgets', 'BudgetController@store');
+	Route::name('budgets_create')->get('budgets_create', 'BudgetController@create');
 
+});
+
+Route::get('/', 'BudgetController@index')->name('home');
+
+Route::resource('budgets', 'BudgetController');
