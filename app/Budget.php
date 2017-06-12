@@ -3,11 +3,12 @@
 namespace Budgets;
 
 use Budgets\User;
+use Budgets\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class Budget extends Model
 {
-	protected $table = 'budgets';
+	
 
     protected $casts = ['user_id' => 'integer'];
 
@@ -16,5 +17,10 @@ class Budget extends Model
     public function user()
     {
     	return $this->belongsTo(User::class);
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
     }
 }
