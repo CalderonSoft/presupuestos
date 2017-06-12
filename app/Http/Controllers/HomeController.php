@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        
     }
 
     /**
@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('budgets.index');
+        if (\Auth::user()) {
+            return redirect()->route('budgets.index');
+        } else {
+            return view('welcome');
+        }        
     }
 }
