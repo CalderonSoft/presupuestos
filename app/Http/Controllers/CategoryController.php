@@ -3,15 +3,17 @@
 namespace Budgets\Http\Controllers;
 
 use Budgets\Category;
+use Budgets\Budget;
 use Illuminate\Http\Request;
+use Budgets\Http\Requests\CreateCategoryRequest;
 
 class CategoryController extends Controller
 {
     
-	public function create()
+	public function create(Budget $budget)
 	{
 		$category = new Category;
-		return view ('categories.create', compact('category'));
+		return view ('categories.create')->with(['category' => $category, 'budget' => $budget]);
 	}
 
 	public function edit()
@@ -28,7 +30,8 @@ class CategoryController extends Controller
 		$budget = Budget::find($category->budget_id);
 
 		session()->flash('message', '¡La categoría ha sido creada!');
-		return redirect()->route('budgets.show')->with(['budget' => $budget]);
+		// return $budget;
+		return redirect()->route('budgets.show', ['budget' => $budget->id]);
 	}
 
 }

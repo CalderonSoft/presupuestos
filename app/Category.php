@@ -9,7 +9,7 @@ class Category extends Model
 {
     protected $casts = ['budget_id' => 'integer'];
 
-    protected $fillable = ['name', 'class'];
+    protected $fillable = ['name', 'class', 'budget_id'];
 
     public function budget()
     {

@@ -3,6 +3,7 @@
 namespace Budgets\Http\Controllers;
 
 use Budgets\Budget;
+use Budgets\Category;
 use Illuminate\Http\Request;
 use Budgets\Http\Requests\CreateBudgetRequest;
 use Budgets\Http\Requests\UpdateBudgetRequest;
@@ -22,7 +23,9 @@ class BudgetController extends Controller
 
     public function show(Budget $budget)
     {
-    	return view('budgets.show')->with(['budget' => $budget]);
+    	$categories = Category::where('budget_id', $budget->id)->get();  	
+    	// return dd($categories);
+    	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories]);
     }
 
     public function create()
