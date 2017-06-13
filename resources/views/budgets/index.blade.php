@@ -6,15 +6,25 @@
 		<div class="row">
 		  <div class="col-md-12">
 		    <h2>
-		      <a href="#">{{$budget->name}}</a>
+		      <a href="{{route('budgets.show', ['budget' => $budget->id])}}">{{$budget->name}}</a>
 
 			<small class="pull-right">
-	        	<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-info">Edit</a>
-	        	<form  action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
+				<table>
+					<tr>
+						<td>
+							<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-info">Editar</a>
+						</td>
+						<td>
+							<form  action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
 	            {{ csrf_field() }}
 	            {{ method_field('DELETE') }}
-	            <button type="submit" class="btn btn-danger">Delete</button>
+	            <button type="submit" class="btn btn-danger">Eliminar</button>
 	        	</form>
+						</td>
+					</tr>
+				</table>
+	        	
+	        	
 
 	      	</small>
 		    </h2>

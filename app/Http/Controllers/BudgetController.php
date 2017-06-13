@@ -20,6 +20,11 @@ class BudgetController extends Controller
         }     	
     }
 
+    public function show(Budget $budget)
+    {
+    	return view('budgets.show')->with(['budget' => $budget]);
+    }
+
     public function create()
 	{
 		$budget = new Budget;

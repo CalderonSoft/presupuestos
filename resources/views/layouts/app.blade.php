@@ -175,15 +175,11 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            @yield('class')
-            <small>@yield('action')</small>
-          </h1>
-        </section>
+        
         
         <!-- Main content -->
         <section class="content">
+        <h4 style="color: gray"><b>@yield('class')</b> @yield('action')</h4>
           <!-- Small boxes (Stat box) -->
             @include('layouts._errors')
 

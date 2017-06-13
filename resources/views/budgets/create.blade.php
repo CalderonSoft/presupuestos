@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('class')
-	Presupuesto
+	Presupuestos
 @endsection
 
 @section('action')
-	Crear
+	| Crear
 @endsection
 
 @section('content')
