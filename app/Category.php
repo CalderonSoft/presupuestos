@@ -2,9 +2,17 @@
 
 namespace Budgets;
 
+use Budgets\Budget;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    //
+    protected $casts = ['budget_id' => 'integer'];
+
+    protected $fillable = ['name', 'class'];
+
+    public function budget()
+    {
+    	return $this->belongsTo(Budget::class);
+    }
 }

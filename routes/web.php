@@ -15,7 +15,11 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 
 	Route::resource('budgets', 'BudgetController');
+<<<<<<< HEAD
 	
+=======
+	Route::resource('categories', 'CategoryController');
+>>>>>>> origin/master
 });
 
 Route::get('/', 'BudgetController@index')->name('home');
