@@ -25,7 +25,16 @@
           </div>
 
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary">Guardar</button>
+				<tr>
+				<td><button type="submit" class="btn btn-primary">Editar y Guardar</button></td>
+				<td>
+					<form  action="{{route('categories.destroy', ['category' => $category->id])}}" method="POST">
+		            {{ csrf_field() }}
+		            {{ method_field('DELETE') }}
+		            <button type="submit" class="btn btn-danger">Eliminar</button>
+		        	</form>
+				</td>
+				</tr>
 			</div>
 		</div>
 

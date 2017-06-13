@@ -6,6 +6,7 @@ use Budgets\Category;
 use Budgets\Budget;
 use Illuminate\Http\Request;
 use Budgets\Http\Requests\CreateCategoryRequest;
+use Budgets\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -23,17 +24,23 @@ class CategoryController extends Controller
 
 	public function update(Category $category, UpdateCategoryRequest $request)
 	{
-		# code...
+		$category->update(
+			$request->only('name', 'class'));
+		$budget = Budget::find($category->budget_id);
+		session()->flash('message', '¡Categoría actualizada!');
+		return redirect()->route('budgets.show', ['budget' => $budget->id]);
 	}
 
-	// public function update(Budget $budget, UpdateBudgetRequest $request)
-	// {
-	// 	$budget->update(
-	// 			$request->only('name', 'description'));
-	// 	session()->flash('message', '¡Presupuesto actualizado!');
-	// 	return redirect()->route('budgets.index');
-	// }
+	public function destroy(Category $category)
+	{
+		$category->delete();
+		$budget = Budget::find($category->budget_id);
 
+    	session()->flash('message', '¡La categoría se ha borrado!');
+    	return redirect()->route('budgets.show', ['budget' => $budget->id]);
+	}
+
+	
 	public function store(CreateCategoryRequest $request)
 	{
 		$category = new Category;
