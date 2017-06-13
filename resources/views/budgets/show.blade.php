@@ -14,7 +14,7 @@
 	<ul>
 		@foreach($categories as $category)
 			<li>
-				{{$category->name}}
+				<a href="{{route('categories.edit', ['category' => $category->id])}}">{{$category->name}}</a>
 			</li>
 		@endforeach
 	</ul>

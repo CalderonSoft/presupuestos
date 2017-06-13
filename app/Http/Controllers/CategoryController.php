@@ -16,10 +16,23 @@ class CategoryController extends Controller
 		return view ('categories.create')->with(['category' => $category, 'budget' => $budget]);
 	}
 
-	public function edit()
+	public function edit(Category $category)
+	{
+		return view('categories.edit', compact('category'));		
+	}
+
+	public function update(Category $category, UpdateCategoryRequest $request)
 	{
 		# code...
 	}
+
+	// public function update(Budget $budget, UpdateBudgetRequest $request)
+	// {
+	// 	$budget->update(
+	// 			$request->only('name', 'description'));
+	// 	session()->flash('message', '¡Presupuesto actualizado!');
+	// 	return redirect()->route('budgets.index');
+	// }
 
 	public function store(CreateCategoryRequest $request)
 	{
