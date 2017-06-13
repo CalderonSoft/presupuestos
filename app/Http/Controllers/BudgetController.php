@@ -32,6 +32,7 @@ class BudgetController extends Controller
 		
         return view('budgets.edit', compact('budget'));
 	}
+	
 	public function store(CreateBudgetRequest $request)
 	{
 		$budget = new Budget;

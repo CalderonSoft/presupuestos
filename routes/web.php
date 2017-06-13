@@ -13,7 +13,9 @@
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
+
 	Route::resource('budgets', 'BudgetController');
+	
 });
 
 Route::get('/', 'BudgetController@index')->name('home');
