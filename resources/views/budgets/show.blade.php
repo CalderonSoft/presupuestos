@@ -60,7 +60,7 @@
 				@foreach($categories as $category)
 						<tr>
 							<td width="20%">
-								<b><a href="{{route('categories.edit', ['category' => $category->id])}}">{{$category->name}}</a></b>
+								<h4><b><a href="{{route('categories.edit', ['category' => $category->id])}}">{{$category->name}}</a></b></h4>
 							</td>
 							<td colspan="12">
 
