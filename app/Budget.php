@@ -8,11 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Budget extends Model
 {
-<<<<<<< HEAD
-=======
-	
-
->>>>>>> origin/master
     protected $casts = ['user_id' => 'integer'];
 
     protected $fillable = ['name', 'description'];
