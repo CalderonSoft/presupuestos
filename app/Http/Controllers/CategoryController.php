@@ -2,6 +2,7 @@
 
 namespace Budgets\Http\Controllers;
 
+use Budgets\Item;
 use Budgets\Category;
 use Budgets\Budget;
 use Illuminate\Http\Request;
@@ -19,7 +20,9 @@ class CategoryController extends Controller
 
 	public function edit(Category $category)
 	{
-		return view('categories.edit', compact('category'));		
+		$items = Item::where('category_id', $category->id)->get();
+		// return dd($items);
+		return view('categories.edit')->with(['category' => $category, 'items' => $items]);		
 	}
 
 	public function update(Category $category, UpdateCategoryRequest $request)

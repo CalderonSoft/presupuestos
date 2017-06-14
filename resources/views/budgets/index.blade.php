@@ -10,22 +10,19 @@
 
 			<small class="pull-right">
 				<table>
-					<tr>
+					<tr>	
 						<td>
-							<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-info">Editar</a>
-						</td>
+							<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-primary" style="margin-right: 10px">Editar</a>
+						</td>					
 						<td>
 							<form  action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
-	            {{ csrf_field() }}
-	            {{ method_field('DELETE') }}
-	            <button type="submit" class="btn btn-danger">Eliminar</button>
-	        	</form>
-						</td>
+				            {{ csrf_field() }}
+				            {{ method_field('DELETE') }}
+				            <button type="submit" class="btn btn-warning">Eliminar</button>
+				        	</form>
+						</td>						
 					</tr>
 				</table>
-	        	
-	        	
-
 	      	</small>
 		    </h2>
 		    

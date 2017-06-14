@@ -6797,4 +6797,13 @@ button.close {
     display: none !important;
   }
 }
+#btn-circle{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 18px;
+  line-height: 1.42;
+  border-radius: 20px;
+}
 /*# sourceMappingURL=bootstrap.css.map */

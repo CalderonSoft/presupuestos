@@ -20,6 +20,10 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('categories_create')->get('/categories/create/{budget}', 'CategoryController@create');
 
+	Route::resource('items', 'ItemController');
+
+	Route::name('items_create')->get('/items/create/{category}', 'ItemController@create');
+
 });
 
 Route::get('/', 'BudgetController@index')->name('home');

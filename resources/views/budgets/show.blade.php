@@ -4,7 +4,7 @@
 	<h1>
 		<b>{{$budget->name}}</b>
 		<small class="pull-right">
-        	<a href="{{route('categories_create', ['budget' => $budget->id])}}" class="btn btn-primary">Agregar Categoría</a>
+        	<a href="{{route('categories_create', ['budget' => $budget->id])}}" class="btn btn-lg btn-primary">Agregar Categoría</a>        	
         	</form>
 
       	</small>
@@ -13,7 +13,7 @@
 	<div class="login-box-body">
 		<table class="table">
 			<thead>
-				<th>
+				<th width="20%">
 
 				</th>
 				<th>
@@ -59,14 +59,10 @@
 			<tbody>
 				@foreach($categories as $category)
 						<tr>
-							<td width="20%">
-								<h4><b><a href="{{route('categories.edit', ['category' => $category->id])}}">{{$category->name}}</a></b></h4>
-							</td>
-							<td colspan="12">
-
+							<td colspan="13">							
+								<h4 class="inline"><b><a href="{{route('categories.edit', ['category' => $category->id])}}">{{$category->name}}</a></b></h4>
 							</td>
 							<td>
-
 							</td>
 						</tr>
 						<tr>
@@ -101,7 +97,7 @@
 								$
 							</td>
 						</tr>
-				@endforeach
+				@endforeach				
 			</tbody>
 		</table>
 	</div>

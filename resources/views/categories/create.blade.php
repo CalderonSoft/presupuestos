@@ -2,14 +2,9 @@
 
 @section('content')
 
-	@if($category->exists)
-		<form action="{{ route('categories.update', ['category' => $category->id]) }}" method="POST">
-		{{method_field('PUT')}}
-	@else
 		<form action="{{ route('categories.store') }}" method="POST">
-	@endif
 
-	{{ csrf_field() }}
+		{{ csrf_field() }}
 		<div class="login-box-body">
 			<input type="hidden" name="budget_id" value="{{$budget->id}}">
 			<!-- Name field -->
