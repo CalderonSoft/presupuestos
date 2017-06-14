@@ -24,8 +24,9 @@ class BudgetController extends Controller
     public function show(Budget $budget)
     {
     	$categories = Category::where('budget_id', $budget->id)->get();  	
-    	// return dd($categories);
-    	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories]);
+    	$item = new ItemController;
+    	$items = $item->getItemsByBudget($budget);
+    	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items]);
     }
 
     public function create()

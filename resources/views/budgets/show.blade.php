@@ -65,21 +65,18 @@
 							<td>
 							</td>
 						</tr>
-						<tr>
-							<td colspan="14">
-								Primer Item
-							</td>
-						</tr>
-						<tr>
-							<td colspan="14">
-								Segundo Item
-							</td>
-						</tr>
-						<tr>
-							<td colspan="14">
-								Tercer Item
-							</td>
-						</tr>
+						@foreach($items as $item)
+							@if($item->category_id == $category->id)
+								<tr>
+									<td>
+									{{$item->description}}
+									</td>
+									<td colspan="13">
+										
+									</td>
+								</tr>
+							@endif
+						@endforeach
 						<tr class="
 						@if($category->class == "Ingreso")
 							success
