@@ -14,11 +14,11 @@
 						<input type="hidden" name="category_id" value="{{$category->id}}">
 						<div class="form-group">
 							<label  for="description">Descripción:</label>
-							<input type="text" name="description" class="form-control" value="">
+							<input type="text" name="description" class="form-control" value="" required autofocus>
 						</div>
 						<div class="pull-right">
 							<div class="form-group">
-								<input type="submit" class="btn btn-primary" value="Guardar">
+								<input type="submit" class="btn btn-primary btn-lg" value="Guardar">
 							</div>
 						</div>
 						<br>

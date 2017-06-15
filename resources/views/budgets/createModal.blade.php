@@ -15,12 +15,12 @@
 								<!-- Title field -->
 								<div class="form-group">
 									<label for="name">Nombre</label>
-									<input type="text" name="name" class="form-control" value="{{old('name')}}" autofocus />
+									<input type="text" name="name" class="form-control" value="{{old('name')}}" required autofocus />
 								</div>
 								<!-- Description Input -->
 								<div class="form-group">
 									<label for="description">Descripción</label>
-									<textarea rows="5" name="description" class="form-control">{{old('description')}}</textarea>
+									<textarea rows="5" name="description" class="form-control" required>{{old('description')}}</textarea>
 								</div>
 
 								<div class="form-group">

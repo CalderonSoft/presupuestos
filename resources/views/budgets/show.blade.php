@@ -4,9 +4,9 @@
 	<h1>
 		<b>{{$budget->name}}</b>
 		<small class="pull-right">
-        	<a href="{{route('categories_create', ['budget' => $budget->id])}}" class="btn btn-lg btn-primary">Agregar Categoría</a>        	
-        	</form>
-
+        	<!-- <a href="{{route('categories_create', ['budget' => $budget->id])}}" class="btn btn-lg btn-primary">Agregar Categoría</a>        	 -->
+        	<a href="" data-toggle="modal" data-target="#createCategory" class="btn btn-lg btn-primary">Agregar Categoría</a>
+        	@include('categories.create')
       	</small>
 	</h1>
 	<p>{{$budget->description}}</p>

@@ -44,9 +44,9 @@
 			<a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createItem" style="padding: 0; width: 32px;">
 				<b data-toggle="tooltip" title="Agregar nuevo item" style="font-size: 20px;">+</b>						
 			</a>
+			@include('items.create')
 			<small><b>Items de la categoría</b></small>			
-		</h3>
-		@include('items.create')
+		</h3>		
 		<ul>
 			@foreach($items as $item)
 			<li>
