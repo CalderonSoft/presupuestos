@@ -13,53 +13,69 @@
 	<div class="login-box-body">
 		<table class="table">
 			<thead>
-				<th width="20%">
-					
+				<th width="20%" style="text-align: center;">
+					<form class="form-inline" action="#" method="post" style="font-size: 1.2em;">
+						<input type="hidden" name="name" value="{{$bYear = date("Y")}}">
+						<input type="hidden" name="name" value="{{$year = null}}">
+						<label for="budgetYear"><b>AÑO </b></label>
+						<select class="form-control" name="budgetYear">
+							@for($i = 0 ; $i < 5 ; $i++)
+							<option value="{{$bYear + $i}}"
+							@if($year != null)
+								@if($year == ($bYear + $i))
+									selected="true"
+								@endif
+							@endif
+							>{{$bYear + $i}}</option>
+							@endfor
+						</select>
+						<button type="submit" name="button" class="btn btn-info glyphicon glyphicon-refresh"></button>
+					</form>
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Ene
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Feb
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Mar
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Abr
 				</th>
-				<th>
+				<th style="text-align: center;">
 					May
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Jun
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Jul
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Ago
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Sep
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Oct
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Nov
 				</th>
-				<th>
+				<th style="text-align: center;">
 					Dic
 				</th>
-				<th>
+				<th style="text-align: center;">
 					<b>TOTAL</b>
 				</th>
 			</thead>
 			<tbody>
 				@foreach($categories as $category)
 						<tr>
-							<td colspan="13">							
+							<td colspan="13">
 								<h4 class="inline"><b><a href="{{route('categories.edit', ['category' => $category->id])}}">{{$category->name}}</a></b></h4>
 							</td>
 							<td>
@@ -69,50 +85,50 @@
 							@if($item->category_id == $category->id)
 							<form>
 								<tr>
-									<td>	
-									<a href="">							
+									<td>
+									<a href="">
 										<span class="glyphicon glyphicon-pencil"></span>
 									</a>
 									{{$item->description}}
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 									<td>
-										
+
 									</td>
 								</tr>
 							</form>
@@ -135,7 +151,20 @@
 								$
 							</td>
 						</tr>
-				@endforeach				
+				@endforeach
+				<tr>
+					<td colspan="14">
+
+					</td>
+				</tr>
+					<tr>
+						<td colspan="13">
+
+						</td>
+						<td class="info">
+							<b>$</b>
+						</td>
+					</tr>
 			</tbody>
 		</table>
 	</div>

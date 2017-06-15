@@ -10,36 +10,36 @@
 				Crea tu primer presupuesto presionando el botón azul.
 			</small>
 		</h2>
-	@endif	
+	@endif
 		<div class="row">
-			@foreach($budgets as $budget)				
+			@foreach($budgets as $budget)
 				  <div class="col-md-12">
 				    <h2>
-				      <a href="{{route('budgets.show', ['budget' => $budget->id])}}">{{$budget->name}}</a>
+				      <a href="{{route('budgets.show', ['budget' => $budget->id])}}" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
 
 					<small class="pull-right">
 						<table>
-							<tr>	
+							<tr>
 								<td>
 									<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-default" style="margin-right: 10px">Editar</a>
-								</td>					
+								</td>
 								<td>
 									<form  action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
 						            {{ csrf_field() }}
 						            {{ method_field('DELETE') }}
 						            <button type="submit" class="btn btn-default">Eliminar</button>
 						        	</form>
-								</td>						
+								</td>
 							</tr>
 						</table>
 			      	</small>
-				    </h2>		    
+				    </h2>
+						<hr>
 				  </div>
-				  <hr>			
-			@endforeach		
+			@endforeach
 
 			<div class="col-md-3">
-				<div 
+				<div
 					style="
 					position: fixed;
 					right: 40px;
@@ -51,7 +51,7 @@
 					</a>
 				</div>
 				@include('budgets.createModal')
-			</div>		
+			</div>
 		</div>
 	</div>
 @endsection

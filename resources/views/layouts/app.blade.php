@@ -55,8 +55,8 @@
             <span class="sr-only">Toggle navigation</span>
           </a>
           <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">              
-              <!-- User Account: style can be found in dropdown.less -->              
+            <ul class="nav navbar-nav">
+              <!-- User Account: style can be found in dropdown.less -->
               @if (Auth::guest())
                   <li><a href="{{ route('login') }}">Ingresar</a></li>
                   <li><a href="{{ route('register') }}">Registrarse</a></li>
@@ -69,12 +69,12 @@
                 @endif
               </li>
               <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 @if($image == "user_man_1.png")
                   <img src="{{asset('dist/img/user_man_1.png')}}" class="user-image" alt="User Image">
                 @else
                   <img src="{{asset('dist/img/user_woman_1.png')}}" class="user-image" alt="User Image">
-                @endif               
+                @endif
                   <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -84,7 +84,7 @@
                     <img src="{{asset('dist/img/user_man_1.png')}}" class="img-circle" alt="User Image">
                   @else
                     <img src="{{asset('dist/img/user_woman_1.png')}}" class="img-circle" alt="User Image">
-                  @endif 
+                  @endif
                     <p>
                      {{ Auth::user()->name }}
                       <small>Member {{Auth::user()->created_at->diffForHumans()}}</small>
@@ -133,7 +133,7 @@
               <img src="{{asset('dist/img/user_man_1.png')}}" class="img" alt="User Image">
             @else
               <img src="{{asset('dist/img/user_woman_1.png')}}" class="img" alt="User Image">
-            @endif 
+            @endif
             </div>
             <div class="pull-left info">
               <p>{{ Auth::user()->name }}</p>
@@ -155,7 +155,7 @@
             <li class="header">MENÚ</li>
             <li class="active treeview">
               <a href="#">
-                <i class="glyphicon glyphicon-tasks"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="glyphicon glyphicon-usd"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i>
                 <!-- <i class="fa fa-circle"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i> -->
               </a>
               <ul class="treeview-menu">
@@ -164,10 +164,10 @@
               </ul>
             </li>
 
-  
-           
-           
-          
+
+
+
+
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -176,8 +176,8 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        
-        
+
+
         <!-- Main content -->
         <section class="content">
         <h4 style="color: gray"><b>@yield('class')</b> @yield('action')</h4>
@@ -185,23 +185,25 @@
             @include('layouts._errors')
 
             @include('layouts._messages')
-                   
-            @yield('content')
-                  
 
-     
+            @yield('content')
+
+
+
         </section><!-- /.content -->
-      
+
       </div><!-- /.content-wrapper -->
-      
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
+
+      <footer class="" style="color: #c1c1c1;">
+        <div class="pull-right hidden-xs" style="margin-right: 20px;">
           <b>Version</b> 2.3.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <div class="" style="margin-left: 60px;">
+          <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        </div>
       </footer>
 
-      
+
       <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>

@@ -28,3 +28,10 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/', 'BudgetController@index')->name('home');
 
+Route::get('/loginT', function(){
+	return view('Auth.login');
+});
+
+Route::get('/registerT', function(){
+	return view('Auth.register');
+});

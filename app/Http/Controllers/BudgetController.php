@@ -10,7 +10,7 @@ use Budgets\Http\Requests\UpdateBudgetRequest;
 
 class BudgetController extends Controller
 {
-    
+
 	public function index()
     {
     	if (\Auth::user()) {
@@ -18,12 +18,12 @@ class BudgetController extends Controller
     		return view('budgets.index', compact('budgets'));
         } else {
             return view('welcome');
-        }     	
+        }
     }
 
     public function show(Budget $budget)
     {
-    	$categories = Category::where('budget_id', $budget->id)->get();  	
+    	$categories = Category::with('budget')->where('budget_id', $budget->id)->get();  	
     	$item = new ItemController;
     	$items = $item->getItemsByBudget($budget);
     	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items]);
@@ -42,7 +42,7 @@ class BudgetController extends Controller
 
         return view('budgets.edit', compact('budget'));
 	}
-	
+
 	public function store(CreateBudgetRequest $request)
 	{
 		$budget = new Budget;
@@ -64,15 +64,15 @@ class BudgetController extends Controller
 	}
 
 	public function destroy(Budget $budget)
-    {    	
+    {
     	$budget->delete();
 
     	session()->flash('message', '¡El presupuesto se ha borrado!');
     	return redirect()->route('budgets.index');
 
-    	// return back()->with('info', 'El presupuesto ' . $id . ' fue eliminado');    	
+    	// return back()->with('info', 'El presupuesto ' . $id . ' fue eliminado');
     }
-    
+
 
 
 
