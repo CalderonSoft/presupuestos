@@ -42,7 +42,6 @@
 	<div>
 		<h3>
 			<a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createItem" style="padding: 0; width: 32px;">
-			<!-- <a href="{{route('items_create', ['category' => $category->id])}}" class="btn btn-primary btn-sm" style="padding: 0; width: 32px;"> -->
 				<b data-toggle="tooltip" title="Agregar nuevo item" style="font-size: 20px;">+</b>						
 			</a>
 			<small><b>Items de la categoría</b></small>			

@@ -14,7 +14,7 @@ class BudgetController extends Controller
 	public function index()
     {
     	if (\Auth::user()) {
-            $budgets = Budget::orderBy('id', 'DESC')->paginate(10);
+            $budgets = Budget::with('user')->where('user_id', \Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
     		return view('budgets.index', compact('budgets'));
         } else {
             return view('welcome');
