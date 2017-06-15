@@ -14,7 +14,7 @@
 		<table class="table">
 			<thead>
 				<th width="20%">
-
+					
 				</th>
 				<th>
 					Ene
@@ -67,14 +67,55 @@
 						</tr>
 						@foreach($items as $item)
 							@if($item->category_id == $category->id)
+							<form>
 								<tr>
-									<td>
+									<td>	
+									<a href="">							
+										<span class="glyphicon glyphicon-pencil"></span>
+									</a>
 									{{$item->description}}
 									</td>
-									<td colspan="13">
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
+										
+									</td>
+									<td>
 										
 									</td>
 								</tr>
+							</form>
 							@endif
 						@endforeach
 						<tr class="

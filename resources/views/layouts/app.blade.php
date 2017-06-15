@@ -155,11 +155,12 @@
             <li class="header">MENÚ</li>
             <li class="active treeview">
               <a href="#">
-                <i class="fa fa-circle"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="glyphicon glyphicon-tasks"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i>
+                <!-- <i class="fa fa-circle"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i> -->
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{route('budgets.create')}}"><i class="fa fa-circle-o"></i>Crear Presupuesto</a></li>
-                <li><a href="{{route('budgets.index')}}"><i class="fa fa-circle-o"></i>Gastos</a></li>
+                <li class="active"><a href="{{route('budgets.create')}}">Crear Presupuesto</a></li>
+                <li><a href="{{route('budgets.index')}}">Gastos</a></li>
               </ul>
             </li>
 
