@@ -27,7 +27,7 @@
 								@endif
 							@endif
 							>{{date("Y") + $i}}</option>
-							@endfor							
+							@endfor
 						</select>
 						<button type="submit" name="button" class="btn btn-info glyphicon glyphicon-refresh"></button>
 					</form>
@@ -89,7 +89,11 @@
 									<a href="{{route('items_edit', ['item' => $item->id])}}">
 										<span class="glyphicon glyphicon-pencil"></span>
 									</a>
+									@if(strlen($item->description) > 25)
+									{{substr($item->description, 0, 25)}}...
+									@else
 									{{$item->description}}
+									@endif
 									</td>
 									<td>
 

@@ -11,7 +11,7 @@ use Budgets\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
-    
+
 	public function create(Budget $budget)
 	{
 		$category = new Category;
@@ -21,8 +21,8 @@ class CategoryController extends Controller
 	public function edit(Category $category)
 	{
 		// $items = Item::where('category_id', $category->id)->get();
-		$items = $category->items->reverse();
-		return view('categories.edit')->with(['category' => $category, 'items' => $items]);		
+		$items = $category->items;
+		return view('categories.edit')->with(['category' => $category, 'items' => $items]);
 	}
 
 	public function update(Category $category, UpdateCategoryRequest $request)
@@ -43,7 +43,7 @@ class CategoryController extends Controller
     	return redirect()->route('budgets.show', ['budget' => $budget->id]);
 	}
 
-	
+
 	public function store(CreateCategoryRequest $request)
 	{
 		$category = new Category;
