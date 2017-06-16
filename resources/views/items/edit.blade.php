@@ -6,7 +6,7 @@
 			{{method_field('PUT')}}
 
 		{{ csrf_field() }}
-			
+
 				<input type="hidden" name="category_id" value="{{$item->category_id}}">
 				<!-- Description field -->
 				<div class="form-group">
@@ -20,17 +20,19 @@
 				</div>
 				</small>
 		</form>
-		<small class="pull-right" style="margin-right: 15px">		
+		<small class="pull-right" style="margin-right: 15px">
 		<form id="deleteItem" action="" method="POST">
 	    {{ csrf_field() }}
 	    {{ method_field('DELETE') }}
 	    <input type="submit" class="btn btn-default" value="Eliminar" />
 		</form>
-		</small>		
+		</small>
 		<small class="pull-right" style="margin-right: 15px">
 		<a href="" class="btn btn-default" onclick="history.back()">Volver</a>
 		</small>
 		<br>
-		<br>	
+		<br>
+		<hr>
+		@include('values._insert')
 </div>
 @endsection

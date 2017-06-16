@@ -2,6 +2,7 @@
 
 namespace Budgets;
 
+use Budgets\Value;
 use Budgets\Category;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,5 +15,10 @@ class Item extends Model
     public function category()
     {
     	return $this->belongsTo(Category::class);
+    }
+
+    public function values()
+    {
+      return $this->hasMany(Value::class);
     }
 }

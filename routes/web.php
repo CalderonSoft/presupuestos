@@ -18,15 +18,18 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::resource('categories', 'CategoryController');
 
-	Route::name('categories_create')->get('/categories/create/{budget}', 'CategoryController@create');
-
 	Route::resource('items', 'ItemController');
+
+	Route::resource('values', 'ValueController');
+
+	Route::name('categories_create')->get('/categories/create/{budget}', 'CategoryController@create');
 
 	Route::name('items_create')->get('/items/create/{category}', 'ItemController@create');
 
 	Route::name('budgets_show')->get('/budget/{budget}', 'BudgetController@show');
 
 	Route::name('items_edit')->get('/item/{item}', 'ItemController@edit');
+
 
 });
 

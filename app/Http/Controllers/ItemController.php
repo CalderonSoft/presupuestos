@@ -26,21 +26,22 @@ class ItemController extends Controller
     	$category = Category::find($item->category_id);
 
     	session()->flash('message', '¡Se ha agregado el item!');
-    	// return dd($request);    	
+    	// return dd($request);
     	return redirect()->route('categories.edit', ['category' => $category->id]);
     }
 
     public function edit(Item $item)
     {
-        return view('items.edit')->with(['item' => $item]);
+			$values = $item->values;
+      return view('items.edit')->with(['item' => $item, 'values' => $values]);
 
         // $items = Item::where('category_id', $category->id)->get();
         // $items = $category->items->reverse();
-        // return view('categories.edit')->with(['category' => $category, 'items' => $items]);     
+        // return view('categories.edit')->with(['category' => $category, 'items' => $items]);
     }
 
     public function getItemsByBudget(Budget $budget)
-    {        
+    {
         $items = DB::table('items')
             ->join('categories', 'category_id', '=', 'categories.id')
             ->where('categories.budget_id', '=', $budget->id)
