@@ -1,7 +1,7 @@
 @extends ('layouts.app')
 
 @section('content')
-	<div class="login-box-body" style="min-height: 500px;">
+	<div class="login-box-body">
 	@if($budgets->isempty())
 		<h2 style="text-align: center; margin-top: 100px;">
 			<b>¡No tienes Presupuestos!</b>
@@ -11,11 +11,12 @@
 			</small>
 		</h2>
 	@endif
+		<!-- <div class="row"> -->
 		<div class="row">
 			@foreach($budgets as $budget)
 				  <div class="col-md-12">
-				    <h2>
-				      <a href="{{route('budgets.show', ['budget' => $budget->id])}}" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
+				    <h2>		    
+				      <a href="{{route('budgets_show', ['budget' => $budget->id])}}" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
 
 					<small class="pull-right">
 						<table>
@@ -37,7 +38,7 @@
 						<hr>
 				  </div>
 			@endforeach
-
+			
 			<div class="col-md-3">
 				<div
 					style="

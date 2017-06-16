@@ -24,6 +24,10 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('items_create')->get('/items/create/{category}', 'ItemController@create');
 
+	Route::name('budgets_show')->get('/budget/{budget}', 'BudgetController@show');
+
+	Route::name('items_edit')->get('/item/{item}', 'ItemController@edit');
+
 });
 
 Route::get('/', 'BudgetController@index')->name('home');

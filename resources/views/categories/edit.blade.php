@@ -35,6 +35,9 @@
 	    {{ method_field('DELETE') }}
 	    <input type="submit" class="btn btn-default" value="Eliminar" />
 		</form>
+		</small>		
+		<small class="pull-right" style="margin-right: 15px">
+		<a href="" class="btn btn-default" onclick="history.back()">Volver</a>
 		</small>
 		<br>
 		<br>	
@@ -47,9 +50,9 @@
 			@include('items.create')
 			<small><b>Items de la categoría</b></small>			
 		</h3>		
-		<ul>
+		<ul class="list-group">
 			@foreach($items as $item)
-			<li>
+			<li class="list-group-item">
 				{{$item->description}}
 			</li>
 			@endforeach

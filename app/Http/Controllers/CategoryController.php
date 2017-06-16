@@ -20,8 +20,8 @@ class CategoryController extends Controller
 
 	public function edit(Category $category)
 	{
-		$items = Item::where('category_id', $category->id)->get();
-		// return dd($items);
+		// $items = Item::where('category_id', $category->id)->get();
+		$items = $category->items->reverse();
 		return view('categories.edit')->with(['category' => $category, 'items' => $items]);		
 	}
 

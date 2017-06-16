@@ -30,11 +30,21 @@ class ItemController extends Controller
     	return redirect()->route('categories.edit', ['category' => $category->id]);
     }
 
+    public function edit(Item $item)
+    {
+        return view('items.edit')->with(['item' => $item]);
+
+        // $items = Item::where('category_id', $category->id)->get();
+        // $items = $category->items->reverse();
+        // return view('categories.edit')->with(['category' => $category, 'items' => $items]);     
+    }
+
     public function getItemsByBudget(Budget $budget)
     {        
         $items = DB::table('items')
             ->join('categories', 'category_id', '=', 'categories.id')
             ->where('categories.budget_id', '=', $budget->id)
+            ->select('items.*')
             ->get();
         return $items;
     }

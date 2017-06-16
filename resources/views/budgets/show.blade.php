@@ -14,20 +14,20 @@
 		<table class="table">
 			<thead>
 				<th width="20%" style="text-align: center;">
-					<form class="form-inline" action="#" method="post" style="font-size: 1.2em;">
-						<input type="hidden" name="name" value="{{$bYear = date("Y")}}">
-						<input type="hidden" name="name" value="{{$year = null}}">
+					<form class="form-inline" action="{{route('budgets_show', ['budget' => $budget->id])}}" method="GET" style="font-size: 1.2em;">
+					{{csrf_field()}}
+						<input type="hidden" name="budget_id" value="{{$budget->id}}">
 						<label for="budgetYear"><b>AÑO </b></label>
 						<select class="form-control" name="budgetYear">
 							@for($i = 0 ; $i < 5 ; $i++)
-							<option value="{{$bYear + $i}}"
+							<option value="{{date("Y") + $i}}"
 							@if($year != null)
-								@if($year == ($bYear + $i))
+								@if($year == (date("Y") + $i))
 									selected="true"
 								@endif
 							@endif
-							>{{$bYear + $i}}</option>
-							@endfor
+							>{{date("Y") + $i}}</option>
+							@endfor							
 						</select>
 						<button type="submit" name="button" class="btn btn-info glyphicon glyphicon-refresh"></button>
 					</form>
@@ -86,7 +86,7 @@
 							<form>
 								<tr>
 									<td>
-									<a href="">
+									<a href="{{route('items_edit', ['item' => $item->id])}}">
 										<span class="glyphicon glyphicon-pencil"></span>
 									</a>
 									{{$item->description}}

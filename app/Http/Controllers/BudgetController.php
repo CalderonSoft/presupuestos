@@ -14,26 +14,34 @@ class BudgetController extends Controller
 	public function index()
     {
     	if (\Auth::user()) {
-            $budgets = Budget::with('user')->where('user_id', \Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
+            // $budgets = Budget::with('user')->where('user_id', \Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
+            $user = \Auth::user();
+            $budgets = $user->budgets->reverse();
     		return view('budgets.index', compact('budgets'));
         } else {
             return view('welcome');
         }
     }
 
-    public function show(Budget $budget)
+    public function show(Budget $budget, Request $request)
     {
-    	$categories = Category::with('budget')->where('budget_id', $budget->id)->get();  	
+    	// $categories = Category::with('budget')->where('budget_id', $budget->id)->get();
+    	if ($request->get('budgetYear') != null) {
+    		// return "Existe".$request->get('budgetYear');
+    		$year = $request->get('budgetYear');
+    	}else{
+    		$year = date("Y");
+    	}
+    	$categories = $budget->categories;
     	$item = new ItemController;
     	$items = $item->getItemsByBudget($budget);
-    	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items]);
+    	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items, 'year' => $year]);
     }
 
     public function create()
 	{
 		$budget = new Budget;
 		return view('budgets.create', compact('budget'));
-		// return view('budgets.create');
 	}
 
 
@@ -56,7 +64,7 @@ class BudgetController extends Controller
 	}
 
 	public function update(Budget $budget, UpdateBudgetRequest $request)
-	{
+	{		
 		$budget->update(
 				$request->only('name', 'description'));
 		session()->flash('message', '¡Presupuesto actualizado!');
@@ -72,8 +80,5 @@ class BudgetController extends Controller
 
     	// return back()->with('info', 'El presupuesto ' . $id . ' fue eliminado');
     }
-
-
-
 
 }
