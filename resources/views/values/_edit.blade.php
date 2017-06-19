@@ -1,9 +1,9 @@
-<form action="{{ route('values_update') }}" method="POST" class="form-inline">
+<form action="{{ route('values.update') }}" method="POST" class="form-inline">
 	{{method_field('PUT')}}
 	{{ csrf_field() }}
-	<input type="text" name="year" value="{{$year}}">
-	<input type="text" name="budget_id" value="{{$budget->id}}">
-	<input type="text" name="item_id" value="{{$item->id}}">
+	<input type="hidden" name="year" value="{{$year}}">
+	<input type="hidden" name="budget_id" value="{{$budget->id}}">
+	<input type="hidden" name="item_id" value="{{$item->id}}">
     <table class="table"  style="width: 250px;">
 			<thead>
 				<th colspan="2" style="text-align: center;">

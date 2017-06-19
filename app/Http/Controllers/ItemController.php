@@ -19,6 +19,7 @@ class ItemController extends Controller
 
     public function store(CreateItemRequest $request)
     {
+        $year = $request->get('budgetYear');
     	$item = new Item;
     	$item->fill($request->only('description', 'category_id'));
     	$item->save();
@@ -27,7 +28,7 @@ class ItemController extends Controller
 
     	session()->flash('message', '¡Se ha agregado el item!');
     	// return dd($request);
-    	return redirect()->route('categories.edit', ['category' => $category->id]);
+    	return redirect()->route('categories_edit', ['category' => $category->id, 'year' => $year]);
     }
 
     public function edit(Item $item, Budget $budget, int $year)

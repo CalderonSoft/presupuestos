@@ -107,6 +107,7 @@
 					$sumTot = 0;
 				?>
 						<tr>
+							<!-- Nombre de la Categoría -->
 							<td colspan="13" style="text-align: left;">
 								<h4 class="inline"><b><a href="{{route('categories_edit', ['category' => $category->id, 'year' => $year])}}">{{$category->name}}</a></b></h4>
 							</td>

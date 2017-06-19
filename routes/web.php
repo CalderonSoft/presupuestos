@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('items_edit')->get('/item/{item}/{budget}/{year}', 'ItemController@edit');
 
-	Route::name('values_update')->get('/value', 'ValueController@update');
+	// Route::name('values_update')->get('/value', 'ValueController@update');
 
 
 

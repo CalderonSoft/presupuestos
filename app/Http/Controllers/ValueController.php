@@ -11,7 +11,12 @@ class ValueController extends Controller
 {
     public function update(InsertPlannedValueRequest $request)
     {
-    	
+    	$year = $request->get('year');
+        return $year;
+
+        $budget = Budget::find($request->get('budget_id'));
+        // return redirect()->route('budgets_show', ['budget' => $budget->id, 'year' => $year]);;
+
     }
 
     public function store(InsertPlannedValueRequest $request)
