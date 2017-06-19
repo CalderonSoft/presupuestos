@@ -14,7 +14,7 @@
 		<table class="table">
 			<thead>
 				<th width="20%" style="text-align: center;">
-					<form class="form-inline" action="{{route('budgets_show', ['budget' => $budget->id])}}" method="GET" style="font-size: 1.2em;">
+					<form class="form-inline" action="{{route('budgets_year', ['budget' => $budget->id])}}" method="GET" style="font-size: 1.2em;">
 					{{csrf_field()}}
 						<input type="hidden" name="budget_id" value="{{$budget->id}}">
 						<label for="budgetYear"><b>AÑO </b></label>
@@ -72,67 +72,156 @@
 					<b>TOTAL</b>
 				</th>
 			</thead>
-			<tbody>
+			<tbody style="text-align: right;">
 				@foreach($categories as $category)
 						<tr>
-							<td colspan="13">
-								<h4 class="inline"><b><a href="{{route('categories.edit', ['category' => $category->id])}}">{{$category->name}}</a></b></h4>
+							<td colspan="13" style="text-align: left;">
+								<h4 class="inline"><b><a href="{{route('categories_edit', ['category' => $category->id, 'year' => $year])}}">{{$category->name}}</a></b></h4>
 							</td>
 							<td>
 							</td>
 						</tr>
 						@foreach($items as $item)
 							@if($item->category_id == $category->id)
+							<?php $sumItem = 0; ?>
 							<form>
 								<tr>
-									<td>
-									<a href="{{route('items_edit', ['item' => $item->id])}}">
+								<!-- Descripción del item -->
+									<td style="text-align: left;">
+									<a href="{{route('items_edit', ['item' => $item->id, 'budget' => $budget->id, 'year' => $year])}}">
 										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-									@if(strlen($item->description) > 25)
-									{{substr($item->description, 0, 25)}}...
-									@else
-									{{$item->description}}
+									</a>									
+										@if(strlen($item->description) > 25)
+										<span data-toggle="tooltip" title="{{$item->description}}">
+											{{substr($item->description, 0, 25)}}...
+										</span>
+										@else
+										{{$item->description}}
+										@endif								
+									</td>
+									<!-- Valor de Enero -->
+									<td>
+									@foreach($values as $value)
+										@if($value->item_id == $item->id && $value->date == $year.'-01-01')
+											${{$value->amount}}
+											<?php $sumItem += $value->amount ?>
+											@break
+										@endif
+									@endforeach
+									</td>
+									<!-- Valor de Febrero -->
+									<td>
+									@foreach($values as $value)
+										@if($value->item_id == $item->id && $value->date == $year.'-02-01')
+											${{$value->amount}}
+											<?php $sumItem += $value->amount ?>
+											@break
+										@endif
+									@endforeach
+									</td>
+									<!-- Valor de Marzo -->
+									<td>
+									@foreach($values as $value)
+										@if($value->item_id == $item->id && $value->date == $year.'-03-01')
+											${{$value->amount}}
+											<?php $sumItem += $value->amount ?>
+											@break
+										@endif
+									@endforeach									
+									</td>
+									<!-- Valor de Abril -->
+									<td>
+									@foreach($values as $value)
+										@if($value->item_id == $item->id && $value->date == $year.'-04-01')
+											${{$value->amount}}
+											<?php $sumItem += $value->amount ?>
+											@break
+										@endif
+									@endforeach
+									</td>
+									<!-- Valor de Mayo -->
+									<td>
+									@foreach($values as $value)
+										@if($value->item_id == $item->id && $value->date == $year.'-05-01')
+											${{$value->amount}}
+											<?php $sumItem += $value->amount ?>
+											@break
+										@endif
+									@endforeach
+									</td>
+									<!-- Valor de Junio -->
+									<td>
+									@foreach($values as $value)
+										@if($value->item_id == $item->id && $value->date == $year.'-06-01')
+											${{$value->amount}}
+											<?php $sumItem += $value->amount ?>
+											@break
+										@endif
+									@endforeach
+									</td>
+									<!-- Valor de Julio -->
+									<td>
+									@foreach($values as $value)
+									@if($value->item_id == $item->id && $value->date == $year.'-07-01')
+										${{$value->amount}}
+										<?php $sumItem += $value->amount ?>
+										@break
 									@endif
+									@endforeach
 									</td>
+									<!-- Valor de Agosto -->
 									<td>
-
+									@foreach($values as $value)
+									@if($value->item_id == $item->id && $value->date == $year.'-08-01')
+										${{$value->amount}}
+										<?php $sumItem += $value->amount ?>
+										@break
+									@endif
+									@endforeach
 									</td>
+									<!-- Valor de Septiembre -->
 									<td>
-
+									@foreach($values as $value)
+									@if($value->item_id == $item->id && $value->date == $year.'-09-01')
+										${{$value->amount}}
+										<?php $sumItem += $value->amount ?>
+										@break
+									@endif
+									@endforeach
 									</td>
+									<!-- Valor de Octubre -->
 									<td>
-
+									@foreach($values as $value)
+									@if($value->item_id == $item->id && $value->date == $year.'-10-01')
+										${{$value->amount}}
+										<?php $sumItem += $value->amount ?>
+										@break
+									@endif
+									@endforeach
 									</td>
+									<!-- Valor de Noviembre -->
 									<td>
-
+									@foreach($values as $value)
+									@if($value->item_id == $item->id && $value->date == $year.'-11-01')
+										${{$value->amount}}
+										<?php $sumItem += $value->amount ?>
+										@break
+									@endif
+									@endforeach
 									</td>
+									<!-- Valor de Diciembre -->
 									<td>
-
+									@foreach($values as $value)
+									@if($value->item_id == $item->id && $value->date == $year.'-12-01')
+										${{$value->amount}}
+										<?php $sumItem += $value->amount ?>
+										@break
+									@endif
+									@endforeach
 									</td>
+									<!-- TOTAL del item en el año -->
 									<td>
-
-									</td>
-									<td>
-
-									</td>
-									<td>
-
-									</td>
-									<td>
-
-									</td>
-									<td>
-
-									</td>
-									<td>
-
-									</td>
-									<td>
-
-									</td>
-									<td>
-
+									${{$sumItem}}
 									</td>
 								</tr>
 							</form>
@@ -151,6 +240,7 @@
 							<td colspan="12">
 
 							</td>
+							<!-- TOTAL de la categoría en el año -->
 							<td>
 								$
 							</td>

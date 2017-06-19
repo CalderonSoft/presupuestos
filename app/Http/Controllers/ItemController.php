@@ -14,7 +14,7 @@ class ItemController extends Controller
 	public function create(Category $category)
 	{
 		$item = new Item;
-		return view('items.create')->with(['item' => $item, 'category' => $category]);
+		return view('items.create')->with(['item' => $item, 'category' => $category, 'values' => $values]);
 	}
 
     public function store(CreateItemRequest $request)
@@ -30,23 +30,20 @@ class ItemController extends Controller
     	return redirect()->route('categories.edit', ['category' => $category->id]);
     }
 
-    public function edit(Item $item)
+    public function edit(Item $item, Budget $budget, int $year)
     {
-			$values = $item->values;
-      return view('items.edit')->with(['item' => $item, 'values' => $values]);
+		$values = $item->values;
+        // return $values;
+        return view('items.edit')->with(['item' => $item, 'budget' => $budget, 'values' => $values, 'year' => $year]);
 
         // $items = Item::where('category_id', $category->id)->get();
         // $items = $category->items->reverse();
         // return view('categories.edit')->with(['category' => $category, 'items' => $items]);
     }
 
-    public function getItemsByBudget(Budget $budget)
+    public function update()
     {
-        $items = DB::table('items')
-            ->join('categories', 'category_id', '=', 'categories.id')
-            ->where('categories.budget_id', '=', $budget->id)
-            ->select('items.*')
-            ->get();
-        return $items;
+        # code...
     }
+    
 }

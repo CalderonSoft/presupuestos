@@ -1,12 +1,20 @@
 @extends('layouts.app')
 
+@section('class')
+	Categoría
+@endsection
+
+@section('action')
+	| Editar
+@endsection
+
 @section('content')
 <div class="login-box-body">
 			<form id="editCategory" action="{{ route('categories.update', ['category' => $category->id]) }}" method="POST">
 			{{method_field('PUT')}}
 
 		{{ csrf_field() }}
-
+				<input type="hidden" name="budgetYear" value="{{$year}}">
 				<input type="hidden" name="category_id" value="{{$category->id}}">
 				<!-- Name field -->
 				<div class="form-group">
@@ -30,7 +38,7 @@
 				</small>
 		</form>
 		<small class="pull-right" style="margin-right: 15px">
-		<form id="deleteCategory" action="{{route('categories.destroy', ['category' => $category->id])}}" method="POST">
+		<form id="deleteCategory" action="{{route('categories_destroy', ['category' => $category->id, 'year' => $year])}}" method="POST">
 	    {{ csrf_field() }}
 	    {{ method_field('DELETE') }}
 	    <input type="submit" class="btn btn-default" value="Eliminar" />

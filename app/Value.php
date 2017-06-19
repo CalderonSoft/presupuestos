@@ -2,6 +2,7 @@
 
 namespace Budgets;
 
+use DB;
 use Budgets\Item;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,4 +16,16 @@ class Value extends Model
   {
     return $this->belongsTo(Item::class);
   }
+
+  public function getValuesByBudget(Budget $budget)
+    {
+        $values = DB::table('values')
+        	->join('items', 'item_id', '=', 'items.id')
+            ->join('categories', 'category_id', '=', 'categories.id')
+            ->where('categories.budget_id', '=', $budget->id)
+            ->select('values.*')
+            ->get();
+        return $values;
+    }
+
 }

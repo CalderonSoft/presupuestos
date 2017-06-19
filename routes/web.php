@@ -24,11 +24,20 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('categories_create')->get('/categories/create/{budget}', 'CategoryController@create');
 
+	Route::name('categories_edit')->get('/categories/edit/{category}/{year}', 'CategoryController@edit');
+
+	Route::name('categories_destroy')->delete('/categories/{category}/{year}', 'CategoryController@destroy');
+
 	Route::name('items_create')->get('/items/create/{category}', 'ItemController@create');
 
-	Route::name('budgets_show')->get('/budget/{budget}', 'BudgetController@show');
+	Route::name('budgets_show')->get('/budget/{budget}/{year}', 'BudgetController@show');
 
-	Route::name('items_edit')->get('/item/{item}', 'ItemController@edit');
+	Route::name('budgets_year')->get('/budget/{budget}', 'BudgetController@setYear');
+
+	Route::name('items_edit')->get('/item/{item}/{budget}/{year}', 'ItemController@edit');
+
+	Route::name('values_update')->get('/value', 'ValueController@update');
+
 
 
 });

@@ -1,5 +1,6 @@
-<form action="{{ route('values.store') }}" method="POST" class="form-inline">
-{{ csrf_field() }}
+<form action="{{ route('values_update') }}" method="POST" class="form-inline">
+	{{method_field('PUT')}}
+	{{ csrf_field() }}
 	<input type="text" name="year" value="{{$year}}">
 	<input type="text" name="budget_id" value="{{$budget->id}}">
 	<input type="text" name="item_id" value="{{$item->id}}">
@@ -18,7 +19,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="ene" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	        		<input type="text" name="ene" class="form-control" value="0" style="text-align: right;"/>	        	
+	        		<input type="text" name="ene" class="form-control"	        		
+	        		@foreach($values as $value)
+	        			@if($value->date == $year.'-01-01')
+	        			value="{{$value->amount}}"	 
+	        			@break
+	        			@endif
+					@endforeach 		
+	        		style="text-align: right;"/>	        	
 	        </td>
 	      </tr>
 	      <tr>
@@ -29,7 +37,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="feb" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="feb" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="feb" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-02-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr>
 	      <tr>
@@ -40,7 +55,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="mar" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="mar" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="mar" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-03-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td style="vertical-align: middle;">
 	      </tr>
 	      <tr>
@@ -51,7 +73,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="abr" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="abr" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="abr" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-04-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr>
 	      <tr>
@@ -62,7 +91,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="may" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="may" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="may" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-05-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td">
 	      </tr>
 	      <tr>
@@ -73,7 +109,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="jun" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="jun" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="jun" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-06-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr>
 	      <tr>
@@ -84,7 +127,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="jul" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="jul" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="jul" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-07-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr>
 	      <tr>
@@ -95,7 +145,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="ago" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="ago" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="ago" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-08-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr>
 	      <tr>
@@ -106,7 +163,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="sep" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="sep" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="sep" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-09-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr style="vertical-align: middle;">
 	      <tr>
@@ -117,7 +181,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="oct" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="oct" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="oct" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-10-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr>
 	      <tr>
@@ -128,7 +199,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="nov" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="nov" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="nov" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-11-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr>
 	      <tr>
@@ -139,7 +217,14 @@
 	        	<div class="pull-left" style="position: absolute; padding-top: 8px; padding-left: 2px;" valign="middle">
 	        		<label  for="dic" class="glyphicon glyphicon-usd"></label>
 	        	</div>
-	    		<input type="text" name="dic" class="form-control" value="0" style="text-align: right;"/>
+	    		<input type="text" name="dic" class="form-control"
+	    		@foreach($values as $value)
+        			@if($value->date == $year.'-12-01')
+        			value="{{$value->amount}}"	 
+        			@break
+        			@endif
+				@endforeach
+	    		style="text-align: right;"/>
 	        </td>
 	      </tr>
 				<tr>

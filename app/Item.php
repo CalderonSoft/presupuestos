@@ -2,6 +2,7 @@
 
 namespace Budgets;
 
+use DB;
 use Budgets\Value;
 use Budgets\Category;
 use Illuminate\Database\Eloquent\Model;
@@ -20,5 +21,15 @@ class Item extends Model
     public function values()
     {
       return $this->hasMany(Value::class);
+    }
+
+    public function getItemsByBudget(Budget $budget)
+    {
+        $items = DB::table('items')
+            ->join('categories', 'category_id', '=', 'categories.id')
+            ->where('categories.budget_id', '=', $budget->id)
+            ->select('items.*')
+            ->get();
+        return $items;
     }
 }

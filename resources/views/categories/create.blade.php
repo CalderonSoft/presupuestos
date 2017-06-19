@@ -12,6 +12,7 @@
 					<form action="{{ route('categories.store') }}" method="POST">
 						{{ csrf_field() }}
 						<div class="login-box-body">
+							<input type="hidden" name="budgetYear" value="{{$year}}">
 							<input type="hidden" name="budget_id" value="{{$budget->id}}">
 							<!-- Name field -->
 							<div class="form-group">

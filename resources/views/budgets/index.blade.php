@@ -3,7 +3,7 @@
 @section('content')
 	<div class="login-box-body">
 	@if($budgets->isempty())
-		<h2 style="text-align: center; margin-top: 100px;">
+		<h2 style="text-align: center; margin-top: 100px; min-height: 200px;">
 			<b>¡No tienes Presupuestos!</b>
 			<br>
 			<small>
@@ -16,7 +16,7 @@
 			@foreach($budgets as $budget)
 				  <div class="col-md-12">
 				    <h2>		    
-				      <a href="{{route('budgets_show', ['budget' => $budget->id])}}" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
+				      <a href="{{route('budgets_show', ['budget' => $budget->id, 'year' => date('Y')])}}" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
 
 					<small class="pull-right">
 						<table>

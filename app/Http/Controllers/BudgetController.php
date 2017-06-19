@@ -2,8 +2,10 @@
 
 namespace Budgets\Http\Controllers;
 
+use Budgets\Item;
 use Budgets\Budget;
 use Budgets\Category;
+use Budgets\Value;
 use Illuminate\Http\Request;
 use Budgets\Http\Requests\CreateBudgetRequest;
 use Budgets\Http\Requests\UpdateBudgetRequest;
@@ -23,19 +25,16 @@ class BudgetController extends Controller
         }
     }
 
-    public function show(Budget $budget, Request $request)
+    public function show(Budget $budget, int $year)
     {
     	// $categories = Category::with('budget')->where('budget_id', $budget->id)->get();
-    	if ($request->get('budgetYear') != null) {
-    		// return "Existe".$request->get('budgetYear');
-    		$year = $request->get('budgetYear');
-    	}else{
-    		$year = date("Y");
-    	}
+        // return $year;
     	$categories = $budget->categories;
-    	$item = new ItemController;
+    	$item = new Item;
     	$items = $item->getItemsByBudget($budget);
-    	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items, 'year' => $year]);
+        $value = new Value;
+        $values = $value->getValuesByBudget($budget);
+    	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items, 'values' => $values, 'year' => $year]);
     }
 
     public function create()
@@ -79,6 +78,12 @@ class BudgetController extends Controller
     	return redirect()->route('budgets.index');
 
     	// return back()->with('info', 'El presupuesto ' . $id . ' fue eliminado');
+    }
+
+    public function setYear(Budget $budget, Request $request)
+    {
+        $year = $request->get('budgetYear');
+        return redirect()->route('budgets_show', ['budget' => $budget->id, 'year' => $year]);
     }
 
 }

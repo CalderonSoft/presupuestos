@@ -19,7 +19,7 @@ class CreateValuesTable extends Migration
             $table->double('amount', 12, 2);
             $table->date('date');
             $table->string('class');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('item_id');
 
             $table->timestamps();

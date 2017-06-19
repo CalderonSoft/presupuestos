@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('class')
+	Item
+@endsection
+
+@section('action')
+	| Editar
+@endsection
+
 @section('content')
 	 <div class="login-box-body">
 			<form id="editItem" action="" method="POST">
@@ -33,6 +41,10 @@
 		<br>
 		<br>
 		<hr>
-		@include('values._insert')
+		@if($values->isNotEmpty())
+			@include('values._edit')
+		@else
+			@include('values._insert')
+		@endif
 </div>
 @endsection
