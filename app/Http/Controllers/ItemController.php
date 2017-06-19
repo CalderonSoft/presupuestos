@@ -46,5 +46,18 @@ class ItemController extends Controller
     {
         # code...
     }
+
+    public function destroy(Item $item, int $year)
+    {
+        $item->delete();
+        $category = $item->category;
+        $items = $category->items;
+        
+        
+
+        session()->flash('message', '¡El Item se ha borrado!');
+        return view('categories.edit')->with(['category' => $category, 'items' => $items, 'year' => $year]);
+    
+    }
     
 }

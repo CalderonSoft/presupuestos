@@ -63,7 +63,7 @@
 			<li class="list-group-item">
 				{{$item->description}}
 				<small class="pull-right" style="margin-right: 15px">
-					<form id="deleteCategory" action="#" method="POST">
+					<form id="deleteCategory" action="{{route('items_destroy', ['item' => $item->id, 'year' => $year])}}" method="POST">
 				    {{ csrf_field() }}
 				    {{ method_field('DELETE') }}
 				    <!-- <input type="submit" class="btn btn-default" value="Eliminar" /> -->

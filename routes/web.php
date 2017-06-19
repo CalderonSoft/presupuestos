@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('items_edit')->get('/item/{item}/{budget}/{year}', 'ItemController@edit');
 
+	Route::name('items_destroy')->delete('/items/{item}/{year}', 'ItemController@destroy');
+
 	// Route::name('values_update')->get('/value', 'ValueController@update');
 
 
