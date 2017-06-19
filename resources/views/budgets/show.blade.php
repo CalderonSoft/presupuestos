@@ -74,6 +74,21 @@
 			</thead>
 			<tbody style="text-align: right;">
 				@foreach($categories as $category)
+				<?php 
+					$sumEne = 0;
+					$sumFeb = 0;
+					$sumMar = 0;
+					$sumAbr = 0;
+					$sumMay = 0;
+					$sumJun = 0;
+					$sumJul = 0;
+					$sumAgo = 0;
+					$sumSep = 0;
+					$sumOct = 0;
+					$sumNov = 0;
+					$sumDic = 0;
+					$sumTot = 0;
+				?>
 						<tr>
 							<td colspan="13" style="text-align: left;">
 								<h4 class="inline"><b><a href="{{route('categories_edit', ['category' => $category->id, 'year' => $year])}}">{{$category->name}}</a></b></h4>
@@ -104,7 +119,10 @@
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-01-01')
 											${{$value->amount}}
-											<?php $sumItem += $value->amount ?>
+											<?php 
+												$sumItem += $value->amount;
+												$sumEne += $value->amount;
+											?>
 											@break
 										@endif
 									@endforeach
@@ -114,7 +132,10 @@
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-02-01')
 											${{$value->amount}}
-											<?php $sumItem += $value->amount ?>
+											<?php 
+												$sumItem += $value->amount;
+												$sumFeb += $value->amount;
+											?>
 											@break
 										@endif
 									@endforeach
@@ -124,7 +145,10 @@
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-03-01')
 											${{$value->amount}}
-											<?php $sumItem += $value->amount ?>
+											<?php
+												$sumItem += $value->amount;
+												$sumMar += $value->amount;
+											?>
 											@break
 										@endif
 									@endforeach									
@@ -134,7 +158,10 @@
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-04-01')
 											${{$value->amount}}
-											<?php $sumItem += $value->amount ?>
+											<?php
+												$sumItem += $value->amount;
+												$sumAbr += $value->amount;
+											?>
 											@break
 										@endif
 									@endforeach
@@ -144,7 +171,10 @@
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-05-01')
 											${{$value->amount}}
-											<?php $sumItem += $value->amount ?>
+											<?php
+												$sumItem += $value->amount;
+												$sumMay += $value->amount;
+											?>
 											@break
 										@endif
 									@endforeach
@@ -154,7 +184,10 @@
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-06-01')
 											${{$value->amount}}
-											<?php $sumItem += $value->amount ?>
+											<?php
+												$sumItem += $value->amount;
+												$sumJun += $value->amount;
+											?>
 											@break
 										@endif
 									@endforeach
@@ -164,7 +197,10 @@
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-07-01')
 										${{$value->amount}}
-										<?php $sumItem += $value->amount ?>
+										<?php
+											$sumItem += $value->amount;
+											$sumJul += $value->amount;
+										?>
 										@break
 									@endif
 									@endforeach
@@ -174,7 +210,10 @@
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-08-01')
 										${{$value->amount}}
-										<?php $sumItem += $value->amount ?>
+										<?php
+											$sumItem += $value->amount;
+											$sumAgo += $value->amount;
+										?>
 										@break
 									@endif
 									@endforeach
@@ -184,7 +223,10 @@
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-09-01')
 										${{$value->amount}}
-										<?php $sumItem += $value->amount ?>
+										<?php
+											$sumItem += $value->amount;
+											$sumSep += $value->amount;
+										?>
 										@break
 									@endif
 									@endforeach
@@ -194,7 +236,10 @@
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-10-01')
 										${{$value->amount}}
-										<?php $sumItem += $value->amount ?>
+										<?php
+											$sumItem += $value->amount;
+											$sumOct += $value->amount;
+										?>
 										@break
 									@endif
 									@endforeach
@@ -204,7 +249,10 @@
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-11-01')
 										${{$value->amount}}
-										<?php $sumItem += $value->amount ?>
+										<?php
+											$sumItem += $value->amount;
+											$sumNov += $value->amount;
+										?>
 										@break
 									@endif
 									@endforeach
@@ -214,7 +262,10 @@
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-12-01')
 										${{$value->amount}}
-										<?php $sumItem += $value->amount ?>
+										<?php
+											$sumItem += $value->amount;
+											$sumDic += $value->amount;
+										?>
 										@break
 									@endif
 									@endforeach
@@ -222,6 +273,9 @@
 									<!-- TOTAL del item en el año -->
 									<td>
 									${{$sumItem}}
+									<?php
+										$sumTot += $sumItem;
+									?>
 									</td>
 								</tr>
 							</form>
@@ -235,14 +289,59 @@
 						@endif
 						">
 							<td>
-								<b>TOTAL</b>
+								<b>Subtotal</b>
 							</td>
-							<td colspan="12">
-
+							<!-- Subtotal Enero -->
+							<td>
+								${{$sumEne}}
+							</td>
+							<!-- Subtotal Febrero -->
+							<td>
+								${{$sumFeb}}
+							</td>
+							<!-- Subtotal Marzo -->
+							<td>
+								${{$sumMar}}
+							</td>
+							<!-- Subtotal Abril -->
+							<td>
+								${{$sumAbr}}
+							</td>
+							<!-- Subtotal Mayo -->
+							<td>
+								${{$sumMay}}
+							</td>
+							<!-- Subtotal Junio -->
+							<td>
+								${{$sumJun}}
+							</td>
+							<!-- Subtotal Julio -->
+							<td>
+								${{$sumJul}}
+							</td>
+							<!-- Subtotal Agosto -->
+							<td>
+								${{$sumAgo}}
+							</td>
+							<!-- Subtotal Septiembre -->
+							<td>
+								${{$sumSep}}
+							</td>
+							<!-- Subtotal Octubre -->
+							<td>
+								${{$sumOct}}
+							</td>
+							<!-- Subtotal Noviembre -->
+							<td>
+								${{$sumNov}}
+							</td>
+							<!-- Subtotal Diciembre -->
+							<td>
+								${{$sumDic}}
 							</td>
 							<!-- TOTAL de la categoría en el año -->
 							<td>
-								$
+								${{$sumTot}}
 							</td>
 						</tr>
 				@endforeach
