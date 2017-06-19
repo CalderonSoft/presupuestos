@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('values_update')->post('/value', 'ValueController@update');
 
-
+	Route::name('items_destroy')->delete('/items/{item}/{year}', 'ItemController@destroy');
 
 });
 
