@@ -73,8 +73,25 @@
 				</th>
 			</thead>
 			<tbody style="text-align: right;">
+			<?php 					
+				//Variables para Totales del ppto
+				$totEne = 0;
+				$totFeb = 0;
+				$totMar = 0;
+				$totAbr = 0;
+				$totMay = 0;
+				$totJun = 0;
+				$totJul = 0;
+				$totAgo = 0;
+				$totSep = 0;
+				$totOct = 0;
+				$totNov = 0;
+				$totDic = 0;
+				$totTot = 0;
+			?>
 				@foreach($categories as $category)
 				<?php 
+					//Variables para totales de categorías
 					$sumEne = 0;
 					$sumFeb = 0;
 					$sumMar = 0;
@@ -281,13 +298,43 @@
 							</form>
 							@endif
 						@endforeach
-						<tr class="
+						<tr
 						@if($category->class == "Ingreso")
-							success
+							class="success"
+							<?php
+								$totEne += $sumEne;
+								$totFeb += $sumFeb;
+								$totMar += $sumMar;
+								$totAbr += $sumAbr;
+								$totMay += $sumMay;
+								$totJun += $sumJun;
+								$totJul += $sumJul;
+								$totAgo += $sumAgo;
+								$totSep += $sumSep;
+								$totOct += $sumOct;
+								$totNov += $sumNov;
+								$totDic += $sumDic;
+								$totTot += $sumTot;
+							?>
 						@else
-							danger
+							class="danger"
+							<?php
+								$totEne -= $sumEne;
+								$totFeb -= $sumFeb;
+								$totMar -= $sumMar;
+								$totAbr -= $sumAbr;
+								$totMay -= $sumMay;
+								$totJun -= $sumJun;
+								$totJul -= $sumJul;
+								$totAgo -= $sumAgo;
+								$totSep -= $sumSep;
+								$totOct -= $sumOct;
+								$totNov -= $sumNov;
+								$totDic -= $sumDic;
+								$totTot -= $sumTot;
+							?>
 						@endif
-						">
+						>
 							<td>
 								<b>Subtotal</b>
 							</td>
@@ -350,12 +397,61 @@
 
 					</td>
 				</tr>
-					<tr>
-						<td colspan="13">
-
+					<tr class="info">
+						<td>
+							<b>TOTAL</b>
 						</td>
-						<td class="info">
-							<b>$</b>
+						<!-- Subtotal Enero -->
+						<td>
+							${{$totEne}}
+						</td>
+						<!-- Subtotal Febrero -->
+						<td>
+							${{$totFeb}}
+						</td>
+						<!-- Subtotal Marzo -->
+						<td>
+							${{$totMar}}
+						</td>
+						<!-- Subtotal Abril -->
+						<td>
+							${{$totAbr}}
+						</td>
+						<!-- Subtotal Mayo -->
+						<td>
+							${{$totMay}}
+						</td>
+						<!-- Subtotal Junio -->
+						<td>
+							${{$totJun}}
+						</td>
+						<!-- Subtotal Julio -->
+						<td>
+							${{$totJul}}
+						</td>
+						<!-- Subtotal Agosto -->
+						<td>
+							${{$totAgo}}
+						</td>
+						<!-- Subtotal Septiembre -->
+						<td>
+							${{$totSep}}
+						</td>
+						<!-- Subtotal Octubre -->
+						<td>
+							${{$totOct}}
+						</td>
+						<!-- Subtotal Noviembre -->
+						<td>
+							${{$totNov}}
+						</td>
+						<!-- Subtotal Diciembre -->
+						<td>
+							${{$totDic}}
+						</td>
+						<!-- TOTAL de la categoría en el año -->
+						<td>
+							<b>${{$totTot}}</b>
 						</td>
 					</tr>
 			</tbody>
