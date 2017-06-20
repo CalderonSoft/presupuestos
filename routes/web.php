@@ -21,9 +21,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('budgets_year')->get('/budget/{budget}', 'BudgetController@setYear');
 
-	Route::name('budgets_indexExecute')->get('/budget', 'BudgetController@indexExecute');
+	Route::name('budgets_indexExecute')->get('/budget_real', 'BudgetController@indexExecute');
 
-	Route::name('budgets_execute')->get('/budget/{budget}', 'BudgetController@execute');
+	Route::name('budgets_execute')->get('/budget_real/{budget}', 'BudgetController@execute');
 
 	// Categories
 	Route::resource('categories', 'CategoryController');
