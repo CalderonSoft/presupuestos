@@ -4,6 +4,7 @@ namespace Budgets\Http\Controllers;
 
 use DB;
 use Budgets\Item;
+use Budgets\Value;
 use Budgets\Budget;
 use Budgets\Category;
 use Illuminate\Http\Request;
@@ -33,13 +34,9 @@ class ItemController extends Controller
 
     public function edit(Item $item, Budget $budget, int $year)
     {
-		$values = $item->values;
-        // return $values;
+        $value = new Value;
+        $values = $value->getValuesByBudget($budget, $year);
         return view('items.edit')->with(['item' => $item, 'budget' => $budget, 'values' => $values, 'year' => $year]);
-
-        // $items = Item::where('category_id', $category->id)->get();
-        // $items = $category->items->reverse();
-        // return view('categories.edit')->with(['category' => $category, 'items' => $items]);
     }
 
     public function update()

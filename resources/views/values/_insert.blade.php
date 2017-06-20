@@ -4,13 +4,13 @@
 	<input type="hidden" name="budget_id" value="{{$budget->id}}">
 	<input type="hidden" name="item_id" value="{{$item->id}}">
     <table class="table"  style="width: 250px;">
-			<thead>
-				<th colspan="2" style="text-align: center;">
-					<h4 class="text-info"><b>Ingresar valores</b></h4>
-				</th>
-			</thead>
-			<tbody>
-				<tr>
+		<thead>
+			<th colspan="2" style="text-align: center;">
+				<h4 class="text-info"><b>Ingresar valores</b></h4>
+			</th>
+		</thead>
+		<tbody>
+			<tr>
 	        <td style="vertical-align: middle;">
 	          <label for="ene">Enero</label>          
 	        </td>

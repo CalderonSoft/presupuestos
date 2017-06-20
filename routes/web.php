@@ -14,13 +14,19 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 
+	// Budgets
 	Route::resource('budgets', 'BudgetController');
 
+	Route::name('budgets_show')->get('/budget/{budget}/{year}', 'BudgetController@show');
+
+	Route::name('budgets_year')->get('/budget/{budget}', 'BudgetController@setYear');
+
+	Route::name('budgets_indexExecute')->get('/budget', 'BudgetController@indexExecute');
+
+	Route::name('budgets_execute')->get('/budget/{budget}', 'BudgetController@execute');
+
+	// Categories
 	Route::resource('categories', 'CategoryController');
-
-	Route::resource('items', 'ItemController');
-
-	Route::resource('values', 'ValueController');
 
 	Route::name('categories_create')->get('/categories/create/{budget}', 'CategoryController@create');
 
@@ -28,17 +34,19 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('categories_destroy')->delete('/categories/{category}/{year}', 'CategoryController@destroy');
 
+	// Items
+	Route::resource('items', 'ItemController');
+
 	Route::name('items_create')->get('/items/create/{category}', 'ItemController@create');
 
-	Route::name('budgets_show')->get('/budget/{budget}/{year}', 'BudgetController@show');
-
-	Route::name('budgets_year')->get('/budget/{budget}', 'BudgetController@setYear');
-
-	Route::name('items_edit')->get('/item/{item}/{budget}/{year}', 'ItemController@edit');
-
-	Route::name('values_update')->post('/value', 'ValueController@update');
+	Route::name('items_edit')->get('/item/{item}/{budget}/{year}', 'ItemController@edit');	
 
 	Route::name('items_destroy')->delete('/items/{item}/{year}', 'ItemController@destroy');
+
+	// Values
+	Route::resource('values', 'ValueController');
+
+	Route::name('values_update')->post('/value', 'ValueController@update');
 
 });
 

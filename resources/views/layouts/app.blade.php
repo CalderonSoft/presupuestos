@@ -159,14 +159,11 @@
                 <!-- <i class="fa fa-circle"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i> -->
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{route('budgets.create')}}">Crear Presupuesto</a></li>
-                <li><a href="{{route('budgets.index')}}">Gastos</a></li>
+                <li><a href="{{route('budgets.create')}}">- Crear Presupuesto</a></li> 
+                <li><a href="{{route('budgets.index')}}">- Planear Presupuesto</a></li>               
+                <li><a href="{{route('budgets_indexExecute')}}">- Ejecutar Presupuesto</a></li>                
               </ul>
             </li>
-
-
-
-
 
           </ul>
         </section>

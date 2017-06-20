@@ -15,25 +15,30 @@ class BudgetController extends Controller
 
 	public function index()
     {
-    	if (\Auth::user()) {
+        if (\Auth::user()) {
             // $budgets = Budget::with('user')->where('user_id', \Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
             $user = \Auth::user();
             $budgets = $user->budgets->reverse();
-    		return view('budgets.index', compact('budgets'));
+            return view('budgets.index', compact('budgets'));
         } else {
             return view('welcome');
         }
     }
 
+    public function indexExecute()
+        {
+            $user = \Auth::user();
+            $budgets = $user->budgets->reverse();
+    		return view('budgets.indexExecute', compact('budgets'));
+        }
+
     public function show(Budget $budget, int $year)
     {
-    	// $categories = Category::with('budget')->where('budget_id', $budget->id)->get();
-        // return $year;
     	$categories = $budget->categories;
     	$item = new Item;
     	$items = $item->getItemsByBudget($budget);
         $value = new Value;
-        $values = $value->getValuesByBudget($budget);
+        $values = $value->getValuesByBudget($budget, $year);
     	return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items, 'values' => $values, 'year' => $year]);
     }
 
@@ -84,6 +89,14 @@ class BudgetController extends Controller
     {
         $year = $request->get('budgetYear');
         return redirect()->route('budgets_show', ['budget' => $budget->id, 'year' => $year]);
+    }
+
+    public function execute(Budget $budget)
+    {
+        $categories = $budget->categories;
+        $item = new Item;
+        $items = $item->getItemsByBudget($budget);
+        return view('budgets.execute')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items]);
     }
 
 }

@@ -1,5 +1,13 @@
 @extends ('layouts.app')
 
+@section('class')
+	Mis Presupuestos
+@endsection
+
+@section('action')
+	| Planeación
+@endsection
+
 @section('content')
 	<div class="login-box-body">
 	@if($budgets->isempty())
