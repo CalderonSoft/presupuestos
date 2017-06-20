@@ -11,7 +11,7 @@
 				<div class="login-box-body">
 					<form action="{{route('items.store')}}" method="POST">
 					{{ csrf_field() }}
-						<input type="text" name="budgetYear" value="{{$year}}">
+						<input type="hidden" name="budgetYear" value="{{$year}}">
 						<input type="hidden" name="category_id" value="{{$category->id}}">
 						<div class="form-group">
 							<label  for="description">Descripción:</label>

@@ -8,6 +8,7 @@ use Budgets\Budget;
 use Budgets\Category;
 use Illuminate\Http\Request;
 use Budgets\Http\Requests\CreateItemRequest;
+use Budgets\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
 {
@@ -42,9 +43,17 @@ class ItemController extends Controller
         // return view('categories.edit')->with(['category' => $category, 'items' => $items]);
     }
 
-    public function update()
+    public function update(Item $item, UpdateItemRequest $request)
     {
-        # code...
+            $item->update(
+            $request->only('description'));
+        
+        $category = $item->category;
+        $budget = $category->budget;
+        
+        session()->flash('message', '¡Item actualizado!');
+        $year = $request->get('budgetYear');
+        return redirect()->route('budgets_show', ['budget' => $budget->id, 'year' => $year]);
     }
 
     public function destroy(Item $item, int $year)
@@ -52,10 +61,7 @@ class ItemController extends Controller
         $item->delete();
         $category = $item->category;
         $items = $category->items;
-        
-        
-
-        session()->flash('message', '¡El Item se ha borrado!');
+        session()->flash('message', '¡El Item se ha borrado!');        
         return view('categories.edit')->with(['category' => $category, 'items' => $items, 'year' => $year]);
     
     }
