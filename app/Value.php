@@ -18,11 +18,21 @@ class Value extends Model
   }
 
   public function getValuesByBudget(Budget $budget, int $year)
+  {
+      $values = DB::table('values')
+        ->join('items', 'item_id', '=', 'items.id')
+          ->join('categories', 'category_id', '=', 'categories.id')
+          ->where('categories.budget_id', '=', $budget->id)
+          ->whereYear('values.date', $year)
+          ->select('values.*')
+          ->get();
+      return $values;
+  }
+
+  public function getValuesByItem(Item $item, int $year)
     {
         $values = DB::table('values')
-        	->join('items', 'item_id', '=', 'items.id')
-            ->join('categories', 'category_id', '=', 'categories.id')
-            ->where('categories.budget_id', '=', $budget->id)
+            ->where('values.item_id', '=', $item->id)
             ->whereYear('values.date', $year)
             ->select('values.*')
             ->get();

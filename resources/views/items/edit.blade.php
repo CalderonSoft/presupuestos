@@ -36,10 +36,8 @@
 		<br>
 		<hr>
 		@if($values->isNotEmpty())
-			No está vacío
 			@include('values._edit')
 		@else
-			Está vacío
 			@include('values._insert')
 		@endif
 </div>

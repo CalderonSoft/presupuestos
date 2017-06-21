@@ -129,6 +129,7 @@
 											{{substr($item->description, 0, 25)}}...
 										</span>
 										@else
+										{{$item->id}}
 										{{$item->description}}
 										@endif								
 									</td>

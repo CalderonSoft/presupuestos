@@ -36,7 +36,7 @@ class ItemController extends Controller
     public function edit(Item $item, Budget $budget, int $year)
     {
         $value = new Value;
-        $values = $value->getValuesByBudget($budget, $year);
+        $values = $value->getValuesByItem($item, $year);
         return view('items.edit')->with(['item' => $item, 'budget' => $budget, 'values' => $values, 'year' => $year]);
     }
 

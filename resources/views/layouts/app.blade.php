@@ -159,9 +159,9 @@
                 <!-- <i class="fa fa-circle"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i> -->
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{route('budgets.create')}}">- Crear Presupuesto</a></li> 
-                <li><a href="{{route('budgets.index')}}">- Planear Presupuesto</a></li>               
-                <li><a href="{{route('budgets_indexExecute')}}">- Ejecutar Presupuesto</a></li>                
+                <li><a href="{{route('budgets.create')}}"><i class="fa fa-bullseye"></i>Crear Presupuesto</a></li> 
+                <li><a href="{{route('budgets.index')}}"><i class="fa fa-bullseye"></i>Planear Presupuesto</a></li>               
+                <li><a href="{{route('budgets_indexExecute')}}"><i class="fa fa-bullseye"></i>Ejecutar Presupuesto</a></li>                
               </ul>
             </li>
 

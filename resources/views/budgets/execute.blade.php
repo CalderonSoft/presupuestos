@@ -15,6 +15,7 @@
 				</small>
 			</h2>
 		@endif
+		<h2><small>Elija el tipo de movimiento</small></h2>
 		<table class="table">
 		@foreach($categories as $category)
 		<tr
