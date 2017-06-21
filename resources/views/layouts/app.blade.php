@@ -164,7 +164,14 @@
                 <li><a href="{{route('budgets_indexExecute')}}"><i class="fa fa-bullseye"></i>Ejecutar Presupuesto</a></li>                
               </ul>
             </li>
-
+            <li class="active treeview">
+              <a href="#">
+                <i class="glyphicon glyphicon-usd"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{route('reports_indexHistory')}}"><i class="fa fa-bullseye"></i>Historial de movimientos</a></li>                 
+              </ul>
+            </li>
           </ul>
         </section>
         <!-- /.sidebar -->

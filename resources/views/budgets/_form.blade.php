@@ -18,9 +18,11 @@
 			<textarea rows="5" name="description" class="form-control">{{$budget->description or old('description')}}</textarea>
 		</div>
 
-		<div class="form-group">
-			<button type="submit" class="btn btn-primary">Guardar</button>
+		<div class="form-group pull-right">
+			<button type="submit" class="btn btn-primary btn-lg">Guardar</button>
 		</div>
+		<br>
+		<br>
 	</div>
 
 </form>

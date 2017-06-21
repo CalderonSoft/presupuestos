@@ -20,15 +20,16 @@
 								<input type="text" name="name" class="form-control" value="{{$category->name or old('name')}}" required autofocus />
 							</div>
 							<!-- Class -->
-							<div class="form-group has-feedback">
+							<div class="form-group has-feedback text-right">
 				              <!-- <label>Género:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 				                  <input type="radio" name="class" class="radio-inline" value="Ingreso" checked="checked"> Ingreso &nbsp;&nbsp;
 				                  <input type="radio" name="class" class="radio-inline" value="Egreso"> Egreso
 				          </div>
 
-							<div class="form-group">
+							<div class="form-group pull-right">
 								<button type="submit" class="btn btn-primary btn-lg">Guardar</button>
 							</div>
+							<br>
 						</div>
 					</form>
 				</div>

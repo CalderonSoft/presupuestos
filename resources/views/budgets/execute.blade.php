@@ -32,7 +32,7 @@
 				<ul class="list-group">
 					@foreach($items as $item)
 						@if($category->id == $item->category_id)
-						<a href="">
+						<a href="{{route('values_create', ['item' => $item->id])}}">
 						<li class="list-group-item">
 							{{$item->description}}
 						</li>

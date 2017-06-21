@@ -121,7 +121,7 @@ return [
 
     'attributes'           => [
         'name'                  => 'nombre',
-        'short'                  => 'descripción breve',
+        'short'                 => 'descripción breve',
         'username'              => 'usuario',
         'email'                 => 'correo electrónico',
         'first_name'            => 'nombre',
@@ -150,6 +150,7 @@ return [
         'time'                  => 'hora',
         'subject'               => 'asunto',
         'message'               => 'mensaje',
+        'amount'                => 'valor',
     ],
 
 ];

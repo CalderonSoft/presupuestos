@@ -2,13 +2,38 @@
 
 namespace Budgets\Http\Controllers;
 
+use Budgets\Item;
 use Budgets\Budget;
 use Budgets\Value;
+use Budgets\Http\Requests\InsertRealValueRequest;
 use Budgets\Http\Requests\InsertPlannedValueRequest;
 use Illuminate\Http\Request;
 
 class ValueController extends Controller
 {
+
+    public function create(Item $item)
+    {
+        $category = $item->category;
+        return view('values.insertReal')->with(['item' => $item, 'category' => $category]);
+    }
+
+    public function storeReal(InsertRealValueRequest $request)
+    {
+        $value = new Value;
+        $value->amount = $request->get('amount');
+        $value->description = $request->get('description');
+        $value->date = date('Y-m-d');
+        $value->class = "real";
+        $value->item_id = $request->get('item_id');
+        $value->save();
+
+        $item = Item::find($value->item_id);
+        $category = $item->category;
+        $budget = $category->budget;
+        return redirect()->route('reports_history', ['budget' => $budget->id]);
+    }
+
     public function update(InsertPlannedValueRequest $request)
     {
     	$year = $request->get('budgetYear');
