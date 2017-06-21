@@ -4,6 +4,7 @@
 	<button type="button" class="close" data-dismiss="alert">
 		&times;
 	</button>
+	<span class="glyphicon glyphicon-ok"></span>
 	{{session()->get('message')}}
 </div>
 

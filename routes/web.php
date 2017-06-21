@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::resource('items', 'ItemController');
 
 	Route::name('items_create')->get('/items/create/{category}', 'ItemController@create');
-	Route::name('items_edit')->get('/item/{item}/{budget}/{year}', 'ItemController@edit');	
+	Route::name('items_edit')->get('/item/{item}/{budget}/{year}', 'ItemController@edit');
 	Route::name('items_destroy')->delete('/items/{item}/{year}', 'ItemController@destroy');
 
 	// Values
@@ -58,4 +58,8 @@ Route::get('/loginT', function(){
 
 Route::get('/registerT', function(){
 	return view('Auth.register');
+});
+
+Route::get('/plantilla', function(){
+	return view('layouts.plantilla');
 });

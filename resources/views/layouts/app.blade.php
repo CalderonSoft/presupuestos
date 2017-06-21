@@ -159,17 +159,17 @@
                 <!-- <i class="fa fa-circle"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i> -->
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{route('budgets.create')}}"><i class="fa fa-bullseye"></i>Crear Presupuesto</a></li> 
-                <li><a href="{{route('budgets.index')}}"><i class="fa fa-bullseye"></i>Planear Presupuesto</a></li>               
-                <li><a href="{{route('budgets_indexExecute')}}"><i class="fa fa-bullseye"></i>Ejecutar Presupuesto</a></li>                
+                <li><a href="{{route('budgets.create')}}"><i class="fa fa-bullseye"></i>Crear Presupuesto</a></li>
+                <li><a href="{{route('budgets.index')}}"><i class="fa fa-bullseye"></i>Planear Presupuesto</a></li>
+                <li><a href="{{route('budgets_indexExecute')}}"><i class="fa fa-bullseye"></i>Ejecutar Presupuesto</a></li>
               </ul>
             </li>
-            <li class="active treeview">
+            <li class="treeview">
               <a href="#">
-                <i class="glyphicon glyphicon-usd"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="glyphicon glyphicon-stats"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{route('reports_indexHistory')}}"><i class="fa fa-bullseye"></i>Historial de movimientos</a></li>                 
+                <li><a href="{{route('reports_indexHistory')}}"><i class="fa fa-bullseye"></i>Historial de movimientos</a></li>
               </ul>
             </li>
           </ul>

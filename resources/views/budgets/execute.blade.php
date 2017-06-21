@@ -15,36 +15,44 @@
 				</small>
 			</h2>
 		@endif
-		<h2><small>Elija el tipo de movimiento</small></h2>
 		<table class="table">
+			<thead>
+				<tr>
+					<td colspan="2">
+						Seleccione el elemento al que pertenece el movimiento a registrar.
+					</td>
+				</tr>
+			</thead>
 		@foreach($categories as $category)
-		<tr
-		@if($category->class == "Ingreso")
-			class="success"
-		@else
-			class="danger"
-		@endif
-		>
-			<td style="vertical-align: middle;">
-				<h4><b>{{$category->name}}</b></h4>
-			</td>
-			<td>
-				<ul class="list-group">
-					@foreach($items as $item)
-						@if($category->id == $item->category_id)
-						<a href="{{route('values_create', ['item' => $item->id])}}">
-						<li class="list-group-item">
-							{{$item->description}}
-						</li>
-						</a>
-						@endif
-					@endforeach
-				</ul>
-			</td>
-		</tr>
-		@endforeach
+		<tbody>
+			<tr
+			@if($category->class == "Ingreso")
+				class="success"
+			@else
+				class="danger"
+			@endif
+			>
+				<td style="vertical-align: middle; text-align: center;">
+					<h4><b>{{$category->name}}</b></h4>
+				</td>
+				<td>
+					<ul class="list-group">
+						@foreach($items as $item)
+							@if($category->id == $item->category_id)
+							<a href="{{route('values_create', ['item' => $item->id])}}">
+							<li class="list-group-item">
+								{{$item->description}}
+							</li>
+							</a>
+							@endif
+						@endforeach
+					</ul>
+				</td>
+			</tr>
+			@endforeach
+		</tbody>
 	</table>
 	</div>
-	
+
 
 @endsection
