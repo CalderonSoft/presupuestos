@@ -59,7 +59,3 @@ Route::get('/loginT', function(){
 Route::get('/registerT', function(){
 	return view('Auth.register');
 });
-
-Route::get('/plantilla', function(){
-	return view('layouts.plantilla');
-});
