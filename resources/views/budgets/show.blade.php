@@ -73,7 +73,7 @@
 				</th>
 			</thead>
 			<tbody style="text-align: right;">
-			<?php 					
+			<?php
 				//Variables para Totales del ppto
 				$totEne = 0;
 				$totFeb = 0;
@@ -90,7 +90,7 @@
 				$totTot = 0;
 			?>
 				@foreach($categories as $category)
-				<?php 
+				<?php
 					//Variables para totales de categorías
 					$sumEne = 0;
 					$sumFeb = 0;
@@ -123,21 +123,21 @@
 									<td style="text-align: left;">
 									<a href="{{route('items_edit', ['item' => $item->id, 'budget' => $budget->id, 'year' => $year])}}">
 										<span class="glyphicon glyphicon-pencil"></span>
-									</a>									
+									</a>
 										@if(strlen($item->description) > 25)
 										<span data-toggle="tooltip" title="{{$item->description}}">
 											{{substr($item->description, 0, 25)}}...
 										</span>
 										@else
 										{{$item->description}}
-										@endif								
+										@endif
 									</td>
 									<!-- Valor de Enero -->
 									<td>
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-01-01')
-											${{$value->amount}}
-											<?php 
+											${{number_format($value->amount, 0, ",", ".")}}
+											<?php
 												$sumItem += $value->amount;
 												$sumEne += $value->amount;
 											?>
@@ -149,8 +149,8 @@
 									<td>
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-02-01')
-											${{$value->amount}}
-											<?php 
+											${{number_format($value->amount, 0, ",", ".")}}
+											<?php
 												$sumItem += $value->amount;
 												$sumFeb += $value->amount;
 											?>
@@ -162,20 +162,20 @@
 									<td>
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-03-01')
-											${{$value->amount}}
+											${{number_format($value->amount, 0, ",", ".")}}
 											<?php
 												$sumItem += $value->amount;
 												$sumMar += $value->amount;
 											?>
 											@break
 										@endif
-									@endforeach									
+									@endforeach
 									</td>
 									<!-- Valor de Abril -->
 									<td>
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-04-01')
-											${{$value->amount}}
+											${{number_format($value->amount, 0, ",", ".")}}
 											<?php
 												$sumItem += $value->amount;
 												$sumAbr += $value->amount;
@@ -188,7 +188,7 @@
 									<td>
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-05-01')
-											${{$value->amount}}
+											${{number_format($value->amount, 0, ",", ".")}}
 											<?php
 												$sumItem += $value->amount;
 												$sumMay += $value->amount;
@@ -201,7 +201,7 @@
 									<td>
 									@foreach($values as $value)
 										@if($value->item_id == $item->id && $value->date == $year.'-06-01')
-											${{$value->amount}}
+											${{number_format($value->amount, 0, ",", ".")}}
 											<?php
 												$sumItem += $value->amount;
 												$sumJun += $value->amount;
@@ -214,7 +214,7 @@
 									<td>
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-07-01')
-										${{$value->amount}}
+										${{number_format($value->amount, 0, ",", ".")}}
 										<?php
 											$sumItem += $value->amount;
 											$sumJul += $value->amount;
@@ -227,7 +227,7 @@
 									<td>
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-08-01')
-										${{$value->amount}}
+										${{number_format($value->amount, 0, ",", ".")}}
 										<?php
 											$sumItem += $value->amount;
 											$sumAgo += $value->amount;
@@ -240,7 +240,7 @@
 									<td>
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-09-01')
-										${{$value->amount}}
+										${{number_format($value->amount, 0, ",", ".")}}
 										<?php
 											$sumItem += $value->amount;
 											$sumSep += $value->amount;
@@ -253,7 +253,7 @@
 									<td>
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-10-01')
-										${{$value->amount}}
+										${{number_format($value->amount, 0, ",", ".")}}
 										<?php
 											$sumItem += $value->amount;
 											$sumOct += $value->amount;
@@ -266,7 +266,7 @@
 									<td>
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-11-01')
-										${{$value->amount}}
+										${{number_format($value->amount, 0, ",", ".")}}
 										<?php
 											$sumItem += $value->amount;
 											$sumNov += $value->amount;
@@ -279,7 +279,7 @@
 									<td>
 									@foreach($values as $value)
 									@if($value->item_id == $item->id && $value->date == $year.'-12-01')
-										${{$value->amount}}
+										${{number_format($value->amount, 0, ",", ".")}}
 										<?php
 											$sumItem += $value->amount;
 											$sumDic += $value->amount;
@@ -290,7 +290,7 @@
 									</td>
 									<!-- TOTAL del item en el año -->
 									<td>
-									${{$sumItem}}
+									${{number_format($sumItem, 0, ",", ".")}}
 									<?php
 										$sumTot += $sumItem;
 									?>
@@ -341,55 +341,55 @@
 							</td>
 							<!-- Subtotal Enero -->
 							<td>
-								${{$sumEne}}
+								${{number_format($sumEne, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Febrero -->
 							<td>
-								${{$sumFeb}}
+								${{number_format($sumFeb, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Marzo -->
 							<td>
-								${{$sumMar}}
+								${{number_format($sumMar, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Abril -->
 							<td>
-								${{$sumAbr}}
+								${{number_format($sumAbr, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Mayo -->
 							<td>
-								${{$sumMay}}
+								${{number_format($sumMay, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Junio -->
 							<td>
-								${{$sumJun}}
+								${{number_format($sumJun, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Julio -->
 							<td>
-								${{$sumJul}}
+								${{number_format($sumJul, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Agosto -->
 							<td>
-								${{$sumAgo}}
+								${{number_format($sumAgo, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Septiembre -->
 							<td>
-								${{$sumSep}}
+								${{number_format($sumSep, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Octubre -->
 							<td>
-								${{$sumOct}}
+								${{number_format($sumOct, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Noviembre -->
 							<td>
-								${{$sumNov}}
+								${{number_format($sumNov, 0, ",", ".")}}
 							</td>
 							<!-- Subtotal Diciembre -->
 							<td>
-								${{$sumDic}}
+								${{number_format($sumDic, 0, ",", ".")}}
 							</td>
 							<!-- TOTAL de la categoría en el año -->
 							<td>
-								${{$sumTot}}
+								${{number_format($sumTot, 0, ",", ".")}}
 							</td>
 						</tr>
 				@endforeach
@@ -404,55 +404,57 @@
 						</td>
 						<!-- Subtotal Enero -->
 						<td>
-							${{$totEne}}
+								${{number_format($totEne, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Febrero -->
 						<td>
-							${{$totFeb}}
+								${{number_format($totFeb, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Marzo -->
 						<td>
-							${{$totMar}}
+								${{number_format($totMar, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Abril -->
 						<td>
-							${{$totAbr}}
+								${{number_format($totAbr, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Mayo -->
 						<td>
-							${{$totMay}}
+								${{number_format($totMay, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Junio -->
 						<td>
-							${{$totJun}}
+								${{number_format($totJun, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Julio -->
 						<td>
-							${{$totJul}}
+								${{number_format($totJul, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Agosto -->
 						<td>
-							${{$totAgo}}
+								${{number_format($totAgo, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Septiembre -->
 						<td>
-							${{$totSep}}
+								${{number_format($totSep, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Octubre -->
 						<td>
-							${{$totOct}}
+								${{number_format($totOct, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Noviembre -->
 						<td>
-							${{$totNov}}
+								${{number_format($totNov, 0, ",", ".")}}
 						</td>
 						<!-- Subtotal Diciembre -->
 						<td>
-							${{$totDic}}
+								${{number_format($totDic, 0, ",", ".")}}
 						</td>
 						<!-- TOTAL de la categoría en el año -->
 						<td>
-							<b>${{$totTot}}</b>
+							<b>
+								${{number_format($totTot, 0, ",", ".")}}
+							</b>
 						</td>
 					</tr>
 			</tbody>

@@ -18,9 +18,9 @@
 	<br>
 	<br>
 	<div class="pull-right">
-		
+
 		<a href="{{route('budgets_execute', ['budget' => $budget->id])}}" class="btn btn-success" style="margin-right: 10px">Registrar movimiento</a>
-								
+
 	</div>
 	<br>
 	<br>
@@ -43,39 +43,81 @@
 					<th>Categoría</th>
 					<th>Item</th>
 					<th>Descripción</th>
-					<th>Ingresos</th>
-					<th>Egresos</th>
+					<th style="text-align: center; width: 110px;">Ingresos</th>
+					<th style="text-align: center; width: 110px;">Egresos</th>
 				</thead>
 				<tbody>
+					<?php
+					$ingresos = 0;
+					$egresos = 0;
+					?>
 					@foreach($values as $value)
 					<tr>
+						<!-- Fecha del movimiento -->
 						<td>
 							{{$value->date}}
 						</td>
+						<!-- Categoría -->
 						<td>
 							{{$value->category}}
 						</td>
+						<!-- Item -->
 						<td>
 							{{$value->item}}
 						</td>
+						<!-- Descripción del movimiento -->
 						<td>
 							{{$value->description}}
 						</td>
 						@if($value->category_class == "Ingreso")
-						<td>
-							{{$value->amount}}
+						<!-- Ingresos -->
+						<td style="text-align: right;">
+							${{number_format($value->amount, 0, ",", ".")}}
+							<?php
+							$ingresos += $value->amount;
+							?>
 						</td>
 						<td></td>
 						@else
+						<!-- Egresos -->
 						<td></td>
-						<td>
-							{{$value->amount}}
+						<td style="text-align: right;">
+							${{number_format($value->amount, 0, ",", ".")}}
+							<?php
+							$egresos += $value->amount;
+							?>
 						</td>
 						@endif
 					</tr>
 					@endforeach
+					<tr style="font-weight: bold;">
+						<td colspan="4" style="text-align: right;">
+							Subtotales <span class="glyphicon glyphicon-arrow-right"></span>
+						</td>
+						<!-- Total Ingresos -->
+						<td style="text-align: right;" class="success">
+							${{number_format($ingresos, 0, ",", ".")}}
+						</td>
+						<!-- Total Egresos -->
+						<td style="text-align: right;" class="danger">
+							${{number_format($ingresos, 0, ",", ".")}}
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+
+						</td>
+					</tr>
+					<tr style="font-weight: bold; font-size: 1.5em;">
+						<td colspan="4" style="text-align: right;">
+							TOTAL <span class="glyphicon glyphicon-arrow-right"></span>
+						</td>
+						<td style="text-align: center;" class="info" colspan="2">
+							${{number_format(($ingresos - $egresos), 0, ",", ".")}}
+						</td>
+					</tr>
 				</tbody>
-			</table>			
+			</table>
 		</div>
 	</div>
 @endsection

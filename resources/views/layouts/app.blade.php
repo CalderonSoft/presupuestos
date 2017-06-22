@@ -171,6 +171,9 @@
               <ul class="treeview-menu">
                 <li><a href="{{route('reports_indexHistory')}}"><i class="fa fa-bullseye"></i>Historial de movimientos</a></li>
               </ul>
+              <ul class="treeview-menu">
+                <li><a href="{{route('reports_indexHistory')}}"><i class="fa fa-bullseye"></i>Planeado Vs Ejecutado</a></li>
+              </ul>
             </li>
           </ul>
         </section>
