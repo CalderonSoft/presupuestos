@@ -36,8 +36,10 @@
 		<br>
 		<hr>
 		@if($values->isNotEmpty())
+			Hay algo
 			@include('values._edit')
 		@else
+			No hay nada
 			@include('values._insert')
 		@endif
 </div>

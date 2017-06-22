@@ -20,6 +20,10 @@ class CreateCategoriesTable extends Migration
             $table->string('class');
             $table->integer('budget_id')->unsigned();
 
+            $table->foreign('budget_id')
+                ->references('id')->on('budgets')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

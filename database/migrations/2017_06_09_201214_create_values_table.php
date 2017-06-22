@@ -20,7 +20,11 @@ class CreateValuesTable extends Migration
             $table->date('date');
             $table->string('class');
             $table->text('description')->nullable();
-            $table->integer('item_id');
+            $table->integer('item_id')->unsigned();
+
+            $table->foreign('item_id')
+                ->references('id')->on('items')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });
