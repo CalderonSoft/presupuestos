@@ -36,10 +36,10 @@
 		<br>
 		<hr>
 		@if($values->isNotEmpty())
-			Hay algo
+			<!-- Hay algo -->
 			@include('values._edit')
 		@else
-			No hay nada
+			<!-- No hay nada -->
 			@include('values._insert')
 		@endif
 </div>

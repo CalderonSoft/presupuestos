@@ -3,11 +3,12 @@
 	<input type="hidden" name="year" value="{{$year}}">
 	<input type="hidden" name="budget_id" value="{{$budget->id}}">
 	<input type="hidden" name="item_id" value="{{$item->id}}">
-    <table class="table"  style="width: 250px;">
+    <table class="table"  style="width: 600px;">
 		<thead>
 			<th colspan="2" style="text-align: center;">
 				<h4 class="text-info"><b>Ingresar valores</b></h4>
 			</th>
+			<th></th>
 		</thead>
 		<tbody>
 			<tr>
@@ -19,6 +20,12 @@
 	        		<label  for="ene" class="glyphicon glyphicon-usd"></label>
 	        	</div>
 	        		<input type="text" name="ene" class="form-control" value="0" style="text-align: right;"/>	        	
+	        </td>
+	        <td>
+	        	<div class="checkbox">
+	        		<input type="checkbox" name="sameValue">
+	        		Aplicar el mismo valor a todos los meses.
+	        	</div>	        	
 	        </td>
 	      </tr>
 	      <tr>
