@@ -37,7 +37,59 @@ class ValueController extends Controller
     public function update(InsertPlannedValueRequest $request)
     {
     	$year = $request->get('budgetYear');
-        // Enero
+
+        if ($request->get('sameValue')) {
+            // Enero
+        $value_ene = Value::find($request->get('ene_id'));
+        $value_ene->amount = $request->get('ene');
+        $value_ene->save();
+        // Febrero
+        $value_feb = Value::find($request->get('feb_id'));
+        $value_feb->amount = $request->get('ene');
+        $value_feb->save();
+        // Marzo
+        $value_mar = Value::find($request->get('mar_id'));
+        $value_mar->amount = $request->get('ene');
+        $value_mar->save();
+        // Abril
+        $value_abr = Value::find($request->get('abr_id'));
+        $value_abr->amount = $request->get('ene');
+        $value_abr->save();
+        // Mayo
+        $value_may = Value::find($request->get('may_id'));
+        $value_may->amount = $request->get('ene');
+        $value_may->save();
+        // Junio
+        $value_jun = Value::find($request->get('jun_id'));
+        $value_jun->amount = $request->get('ene');
+        $value_jun->save();
+        // Julio
+        $value_jul = Value::find($request->get('jul_id'));
+        $value_jul->amount = $request->get('ene');
+        $value_jul->save();
+        // Agosto
+        $value_ago = Value::find($request->get('ago_id'));
+        $value_ago->amount = $request->get('ene');
+        $value_ago->save();
+        // Septiembre
+        $value_sep = Value::find($request->get('sep_id'));
+        $value_sep->amount = $request->get('ene');
+        $value_sep->save();
+        // Octubre
+        $value_oct = Value::find($request->get('oct_id'));
+        $value_oct->amount = $request->get('ene');
+        $value_oct->save();
+        // Noviembre
+        $value_nov = Value::find($request->get('nov_id'));
+        $value_nov->amount = $request->get('ene');
+        $value_nov->save();
+        // Diciembre
+        $value_dic = Value::find($request->get('dic_id'));
+        $value_dic->amount = $request->get('ene');
+        $value_dic->save();
+        }
+        else{
+            // Enero
         $value_ene = Value::find($request->get('ene_id'));
         $value_ene->amount = $request->get('ene');
         $value_ene->save();
@@ -85,6 +137,7 @@ class ValueController extends Controller
         $value_dic = Value::find($request->get('dic_id'));
         $value_dic->amount = $request->get('dic');
         $value_dic->save();
+        }        
 
         $budget = Budget::find($request->get('budget_id'));
         return redirect()->route('budgets_show', ['budget' => $budget->id, 'year' => $year]);;

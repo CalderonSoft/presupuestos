@@ -3,11 +3,12 @@
 	<input type="hidden" name="budgetYear" value="{{$year}}">
 	<input type="hidden" name="budget_id" value="{{$budget->id}}">
 	<input type="hidden" name="item_id" value="{{$item->id}}">
-    <table class="table"  style="width: 250px;">
+    <table class="table"  style="width: 600px;">
 			<thead>
 				<th colspan="2" style="text-align: center;">
 					<h4 class="text-info"><b>Ingresar valores</b></h4>
 				</th>
+				<th></th>
 			</thead>
 			<tbody>
 				<tr>
@@ -26,6 +27,12 @@
 	        			@break
 	        			@endif
 					@endforeach 		        			        	
+	        </td>
+	        <td style="vertical-align: middle;">
+	        	<div class="checkbox">
+	        		<input type="checkbox" name="sameValue">
+	        		Aplicar el valor de enero a todos los meses.
+	        	</div>
 	        </td>
 	      </tr>
 	      <tr>
