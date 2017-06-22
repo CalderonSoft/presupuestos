@@ -9,6 +9,22 @@
 @endsection
 
 @section('content')
+	<div class="pull-left">
+	<h1>
+		<b>{{$budget->name}}</b>
+	</h1>
+	<p>{{$budget->description}}</p>
+	</div>
+	<br>
+	<br>
+	<div class="pull-right">
+		
+		<a href="{{route('budgets_execute', ['budget' => $budget->id])}}" class="btn btn-success" style="margin-right: 10px">Registrar movimiento</a>
+								
+	</div>
+	<br>
+	<br>
+	<br>
 	<div class="login-box-body">
 	@if($values->isempty())
 		<h2 style="text-align: center; margin-top: 100px; min-height: 200px;">

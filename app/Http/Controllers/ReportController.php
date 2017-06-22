@@ -19,6 +19,6 @@ class ReportController extends Controller
     {
     	$value = new Value;
     	$values = $value->getRealValuesByBudget($budget);
-    	return view('reports.history', compact('values'));
+    	return view('reports.history', compact('values', 'budget'));
     }
 }
