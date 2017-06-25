@@ -39,10 +39,10 @@
 		<div class="row">
 			<table class="table">
 				<thead>
-					<th>Fecha</th>
-					<th>Categoría</th>
-					<th>Item</th>
-					<th>Descripción</th>
+					<th style="min-width: 90px; text-align: center;">Fecha</th>
+					<th style="min-width: 90px; text-align: center;">Categoría</th>
+					<th style="min-width: 90px; text-align: center;">Item</th>
+					<th style="text-align: center;">Descripción</th>
 					<th style="text-align: center; width: 110px;">Ingresos</th>
 					<th style="text-align: center; width: 110px;">Egresos</th>
 				</thead>

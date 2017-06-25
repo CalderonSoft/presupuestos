@@ -44,9 +44,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::name('values_storeReal')->post('/realValue', 'ValueController@storeReal');
 
 	// Reportes
-	Route::name('reports_indexHistory')->get('/report', 'ReportController@index');
+	Route::name('reports_index')->get('/report_index/{report}', 'ReportController@index');
 	Route::name('reports_history')->get('/report/{budget}', 'ReportController@history');
-
+	Route::name('reports_plannedExecuted')->get('/report/{budget}/{year}/{month}', 'ReportController@plannedExecuted');
+	Route::name('reports_month')->post('/report', 'ReportController@setMonth');
 
 });
 
