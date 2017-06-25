@@ -54,4 +54,64 @@ class Value extends Model
       return $values;
     }
 
+    public function getValuesPlannedByYear(Budget $budget, int $year)
+    {
+      $values = DB::table('values')
+        ->join('items', 'item_id', '=', 'items.id')
+          ->join('categories', 'category_id', '=', 'categories.id')
+          ->where('categories.budget_id', '=', $budget->id)
+          ->where('values.class', '=', 'planned')
+          ->whereYear('values.date', $year)
+          ->select('items.id as item_id', DB::raw('SUM(values.amount) as planned_value'))
+          ->groupBy('items.id')
+          ->get();
+      return $values;
+    }
+
+    public function getValuesRealByYear(Budget $budget, int $year)
+    {
+      $values = DB::table('values')
+        ->join('items', 'item_id', '=', 'items.id')
+          ->join('categories', 'category_id', '=', 'categories.id')
+          ->where('categories.budget_id', '=', $budget->id)
+          ->where('values.class', '=', 'real')
+          ->whereYear('values.date', $year)
+          ->select('items.id as item_id', DB::raw('SUM(values.amount) as real_value'))
+          ->groupBy('items.id')
+          ->get();
+      return $values;
+    }
+
+    public function getValuesPlannedByMonth(Budget $budget, int $year, int $month)
+    {
+      $values = DB::table('values')
+        ->join('items', 'item_id', '=', 'items.id')
+          ->join('categories', 'category_id', '=', 'categories.id')
+          ->where('categories.budget_id', '=', $budget->id)
+          ->where('values.class', '=', 'planned')
+          ->whereYear('values.date', $year)
+          ->whereMonth('values.date', $month)
+          // ->sum('values.amount')
+          ->select('items.id as item_id', DB::raw('SUM(values.amount) as planned_value'))
+          ->groupBy('items.id')
+          ->get();
+      return $values;
+    }
+
+    public function getValuesRealByMonth(Budget $budget, int $year, int $month)
+    {
+      $values = DB::table('values')
+        ->join('items', 'item_id', '=', 'items.id')
+          ->join('categories', 'category_id', '=', 'categories.id')
+          ->where('categories.budget_id', '=', $budget->id)
+          ->where('values.class', '=', 'real')
+          ->whereYear('values.date', $year)
+          ->whereMonth('values.date', $month)
+          // ->sum('values.amount')
+          ->select('items.id as item_id', DB::raw('SUM(values.amount) as real_value'))
+          ->groupBy('items.id')
+          ->get();
+      return $values;
+    }
+
 }
