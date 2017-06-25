@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -139,17 +138,7 @@
               <p>{{ Auth::user()->name }}</p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
-          </div>
-          <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-          <!-- /.search form -->
+          </div>          
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENÚ</li>
@@ -169,10 +158,10 @@
                 <i class="glyphicon glyphicon-stats"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{route('reports_indexHistory')}}"><i class="fa fa-bullseye"></i>Historial de movimientos</a></li>
+                <li><a href="{{route('reports_index', ['report' => 1])}}"><i class="fa fa-bullseye"></i>Historial de movimientos</a></li>
               </ul>
               <ul class="treeview-menu">
-                <li><a href="{{route('reports_indexHistory')}}"><i class="fa fa-bullseye"></i>Planeado Vs Ejecutado</a></li>
+                <li><a href="{{route('reports_index', ['report' => 2])}}"><i class="fa fa-bullseye"></i>Planeado Vs Ejecutado</a></li>
               </ul>
             </li>
           </ul>
