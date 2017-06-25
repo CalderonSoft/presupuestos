@@ -100,7 +100,7 @@
 						</td>
 						<!-- Total Egresos -->
 						<td style="text-align: right;" class="danger">
-							${{number_format($ingresos, 0, ",", ".")}}
+							${{number_format($egresos, 0, ",", ".")}}
 						</td>
 					</tr>
 					<tr>

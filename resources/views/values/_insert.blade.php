@@ -21,10 +21,10 @@
 	        	</div>
 	        		<input type="text" name="ene" class="form-control" value="0" style="text-align: right;"/>	        	
 	        </td>
-	        <td>
+	        <td style="vertical-align: middle;">
 	        	<div class="checkbox">
 	        		<input type="checkbox" name="sameValue">
-	        		Aplicar el mismo valor a todos los meses.
+	        		Aplicar el valor de enero a todos los meses.
 	        	</div>	        	
 	        </td>
 	      </tr>
