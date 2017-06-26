@@ -49,6 +49,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::name('reports_plannedExecuted')->get('/report/{budget}/{year}/{month}', 'ReportController@plannedExecuted');
 	Route::name('reports_month')->post('/report', 'ReportController@setMonth');
 
+	// PDFs
+	Route::name('pdfs_history')->get('/history_pdf/{budget}', 'PdfController@history');
+
 });
 
 Route::get('/', 'BudgetController@index')->name('home');
