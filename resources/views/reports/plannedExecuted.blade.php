@@ -109,15 +109,36 @@
 				<th style="text-align: center;">
 					Valor Real
 				</th>
+				<th style="text-align: center;">
+					Diferencia
+				</th>
 			</thead>
 			<tbody>
 			@foreach($categories as $category)
-				<tr>
+				<tr
+				
+				>
 					<!-- Nombre de la Categoría -->
-					<td colspan="13" style="">
+					<td style=""
+					@if($category->class == "Ingreso")
+						@php
+							$category_type= 1;
+						@endphp
+						class="success"
+					@else
+						@php
+							$category_type= 2;
+						@endphp
+						class="danger"
+					@endif
+					>
 						<h4 class="inline"><b>{{$category->name}}</b></h4>
 					</td>
-					<td>
+					<td class="" width="140px">
+					</td>
+					<td class="" width="140px">
+					</td>
+					<td class="" width="140px">
 					</td>
 				</tr>
 				@foreach($items as $item)
@@ -126,13 +147,77 @@
 								<!-- Descripción del item -->
 									<td style="padding-left: 20px;">
 										{{$item->description}}
+									</td>			
+									@php
+										$planned = 0;
+										$real = 0;
+									@endphp						
+									<td style="text-align: right;">
+										@foreach($pValues as $pValue)
+											@if($pValue->item_id == $item->id)
+												${{number_format($pValue->planned_value, 0, ",", ".")}}
+													@php
+														$planned = $pValue->planned_value
+													@endphp
+												@break
+											@endif
+										@endforeach
 									</td>
-									<td></td>
-									<td></td>
+									<td style="text-align: right;">
+										@foreach($rValues as $rValue)
+											@if($rValue->item_id == $item->id)
+												${{number_format($rValue->real_value, 0, ",", ".")}}
+													@php
+														$real = $rValue->real_value
+													@endphp
+												@break
+											@endif
+										@endforeach
+									</td>
+									@php
+										if($category_type == 1) {
+											$difference = $real - $planned;
+										}
+										else {
+											$difference = $planned - $real;
+										}										
+									@endphp
+									<td style="text-align: right;" 
+									@if($difference < 0)
+										class="danger"
+									@else
+										class="success"
+									@endif
+									>					
+										${{number_format($difference, 0, ",", ".")}}
+									</td>
 								</tr>
 							@endif
 				@endforeach
 			@endforeach
+				<tr>
+					<td colspan="4"></td>
+				</tr>
+				<tr class="info">
+					<td style="text-align: right;">
+						<b>TOTALES</b> <span class="glyphicon glyphicon-arrow-right"></span>
+					</td>
+					<td style="text-align: right;">
+						${{number_format($pValues->sum('planned_value'), 0, ",", ".")}}
+					</td>
+					<td style="text-align: right;">
+						${{number_format($rValues->sum('real_value'))}}
+					</td>
+					<td style="text-align: right;"
+					@if($pValues->sum('planned_value') - $rValues->sum('real_value') < 0)
+						class="danger"
+					@else
+						class="success"
+					@endif
+					>
+						<b>${{number_format($pValues->sum('planned_value') - $rValues->sum('real_value'), 0, ",", ".")}}</b>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

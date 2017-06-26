@@ -24,7 +24,7 @@ class ReportController extends Controller
                 break;
             
             default:
-                # code...
+            return back();
                 break;
         }
     }
@@ -41,9 +41,16 @@ class ReportController extends Controller
         $categories = $budget->categories;
         $item = new Item;
         $items = $item->getItemsByBudget($budget);
-        // $value = new Value;
-        // $values = $value->getValuesByBudget($budget, $year);
-        return view('reports.plannedExecuted')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items, 'year' => $year, 'month' => $month]);
+        $value = new Value;
+        if ($month ==0) {
+            $pValues = $value->getValuesPlannedByYear($budget, $year);
+            $rValues = $value->getValuesRealByYear($budget, $year);
+        } else {
+            $pValues = $value->getValuesPlannedByMonth($budget, $year, $month);
+            $rValues = $value->getValuesRealByMonth($budget, $year, $month);
+        }
+
+        return view('reports.plannedExecuted')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items, 'year' => $year, 'month' => $month, 'pValues' => $pValues, 'rValues' => $rValues]);
     }
 
     public function setMonth(Request $request)

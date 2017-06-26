@@ -25,25 +25,20 @@
 				  <div class="col-md-12">
 				    <h2>		    
 				      <a href="{{route('budgets_show', ['budget' => $budget->id, 'year' => date('Y')])}}" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
-
-					<small class="pull-right">
-						<table>
-							<tr>
-								<td>
-									<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-default" style="margin-right: 10px">Editar</a>
-								</td>
-								<td>
-									<form  action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
-						            {{ csrf_field() }}
-						            {{ method_field('DELETE') }}
-						            <button type="submit" class="btn btn-default">Eliminar</button>
-						        	</form>
-								</td>
-							</tr>
-						</table>
-			      	</small>
+				    <!-- Botón Eliminar -->
+					<div class="pull-right">
+						<form action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
+			            {{ csrf_field() }}
+			            {{ method_field('DELETE') }}
+			            <button type="submit" class="btn btn-default">Eliminar</button>
+			        	</form>
+			      	</div>		
+			      	<!-- Botón Editar -->
+					<div class="pull-right">
+							<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-default" style="margin-right: 10px">Editar</a>
+					</div>
 				    </h2>
-						<hr>
+					<hr>
 				  </div>
 			@endforeach
 			
