@@ -22,22 +22,21 @@
 		<!-- <div class="row"> -->
 		<div class="row">
 			@foreach($budgets as $budget)
-				  <div class="col-md-12">
-				    <h2>
-				      <a href="" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
-
-					<small class="pull-right">
-						<table>
-							<tr>
-								<td>
-									<a href="{{route('budgets_execute', ['budget' => $budget->id])}}" class="btn btn-success" style="margin-right: 10px">Registrar movimiento</a>
-								</td>
-							</tr>
-						</table>
-			      	</small>
-				    </h2>
-						<hr>
-				  </div>
+				<div class="col-md-12">
+				    <table>
+						<tr>
+							<td style="font-size: 2em;">
+								<a href="" data-toggle="tooltip" title="{{$budget->description}}">
+									{{$budget->name}}
+						      	</a>
+							</td>
+							<td width="10%">
+								<a href="{{route('budgets_execute', ['budget' => $budget->id])}}" class="btn btn-success" style="margin-right: 10px">Registrar movimiento</a>
+							</td>
+						</tr>
+					</table>
+					<hr>
+				</div>
 			@endforeach
 		</div>
 	</div>

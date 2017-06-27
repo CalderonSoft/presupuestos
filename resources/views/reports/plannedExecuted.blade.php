@@ -6,14 +6,19 @@
 
 @section('action')
 	| Planeado Vs Ejecutado
+	<div class="pull-right">
+		<a href="{{route('pdfs_plannedExecuted', ['budget' => $budget->id, 'year' => $year, 'month' => $month])}}" class="btn btn-info" style="margin-right: 10px">Generar PDF</a>
+	</div>
 @endsection
 
 @section('content')
-	<h1>
-		<b>{{$budget->name}}</b>
-	</h1>
-	<p>{{$budget->description}}</p>
+	<br>
 	<div class="login-box-body">
+		<div style="font-size: 2em;">
+			<b>{{$budget->name}}</b>
+		</div>
+		<p>{{$budget->description}}</p>	
+		<hr>
 		<table class="table">
 			<thead>
 				<th width="" style="">

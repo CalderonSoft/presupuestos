@@ -22,24 +22,30 @@
 		<!-- <div class="row"> -->
 		<div class="row">
 			@foreach($budgets as $budget)
-				  <div class="col-md-12">
-				    <h2>		    
-				      <a href="{{route('budgets_show', ['budget' => $budget->id, 'year' => date('Y')])}}" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
-				    <!-- Botón Eliminar -->
-					<div class="pull-right">
-						<form action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
-			            {{ csrf_field() }}
-			            {{ method_field('DELETE') }}
-			            <button type="submit" class="btn btn-default">Eliminar</button>
-			        	</form>
-			      	</div>		
-			      	<!-- Botón Editar -->
-					<div class="pull-right">
-							<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-default" style="margin-right: 10px">Editar</a>
-					</div>
-				    </h2>
+				<div class="col-md-12">
+					<table width="100%">
+						<tr>
+							<td style="font-size: 2em;">
+								<a href="{{route('budgets_show', ['budget' => $budget->id, 'year' => date('Y')])}}" data-toggle="tooltip" title="{{$budget->description}}">
+									{{$budget->name}}
+						      	</a>
+							</td>
+							<td width="145px">
+								<div class="pull-left">
+								<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-default" style="">Editar</a>
+								</div>		
+								<div class="pull-right">
+								<form action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
+					            {{ csrf_field() }}
+					            {{ method_field('DELETE') }}
+					            <button type="submit" class="btn btn-default">Eliminar</button>
+					        	</form>
+					        	</div>
+					        </td>
+						</tr>
+					</table>
 					<hr>
-				  </div>
+				</div>
 			@endforeach
 			
 			<div class="col-md-3">

@@ -6,25 +6,20 @@
 
 @section('action')
 	| Historial de movimientos
-@endsection
-
-@section('content')
-	<div class="pull-left">
-	<h1>
-		<b>{{$budget->name}}</b>
-	</h1>
-	<p>{{$budget->description}}</p>
-	</div>
-	<br>
-	<br>
 	<div class="pull-right">
 		<a href="{{route('pdfs_history', ['budget' => $budget->id])}}" class="btn btn-info" style="margin-right: 10px">Generar PDF</a>
 		<a href="{{route('budgets_execute', ['budget' => $budget->id])}}" class="btn btn-success" style="margin-right: 10px">Registrar movimiento</a>
 	</div>
-	<br>
-	<br>
+@endsection
+
+@section('content')
 	<br>
 	<div class="login-box-body">
+	<div style="font-size: 2em;">
+			<b>{{$budget->name}}</b>
+		</div>
+		<p>{{$budget->description}}</p>	
+		<hr>
 	@if($values->isempty())
 		<h2 style="text-align: center; margin-top: 100px; min-height: 200px;">
 			<b>¡El presupuesto no tiene valores registrados!</b>

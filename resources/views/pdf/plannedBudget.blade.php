@@ -1,86 +1,131 @@
-@extends('layouts.app')
+<html>
+  	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	    <title>Presupuesto Planeado</title>
+	    <style type="text/css">
+	    	body {
+	    		font-family: sans-serif;
+	    	}
 
-@section('class')
-	Presupuestos
-@endsection
+	    	table {
+	    		font-size: 0.8em;
+	    	}
 
-@section('action')
-	| Planeación
-	<div class="pull-right">
-		<a href="{{route('pdfs_budget', ['budget' => $budget->id, 'year' => $year])}}" class="btn btn-info" style="margin-right: 10px">Generar PDF</a>
-		<a href="" data-toggle="modal" data-target="#createCategory" class="btn btn-success">Agregar Categoría</a>
-        	@include('categories.create')
-	</div>
-@endsection
+		    th {
+				background-color: #447BD4;
+				color: white;
+				text-align: center;
+				padding: 5px;
+	    	}
 
-@section('content')		
-	<br>	
-	<div class="login-box-body">	
-		<div style="font-size: 2em;">
-			<b>{{$budget->name}}</b>
+	    	td {
+	    		padding-left: 10px;
+	    	}
+
+	    	.header{
+				background-color: #447BD4;
+				color: white;
+				font-size: 1.5em;
+				font-weight: bolder;
+				text-align: right;
+				padding: 15px;
+	    	}
+	    	.period{
+	    		font-weight: normal;
+	    		text-align: left;
+	    		display: inline;
+	    		float: left;
+	    	}
+	    	.budget{
+	    		font-size: 1.3em;
+	    		margin-top: 15px;
+	    	}
+	    	.totales-row{
+	    		font-weight: bold;
+	    	}
+	    	.total-row{
+	    		font-size: 1.5em;
+	    	}
+	    	.totales-title{
+	    		text-align: right;
+	    		padding-right: 10px;
+	    	}
+	    	.success{
+	    		background-color: #dff0d8;
+	    	}
+	    	.info{
+	    		background-color: #d9edf7;
+	    	}
+	    	.danger{
+	    		background-color: #f2dede;
+	    	}
+	    	.category{
+	    		text-align: left;
+	    		padding: 5px;
+	    		font-size: 1.2em;
+	    		font-weight: bold;
+	    	}
+	    </style>
+  	</head>
+  	<body>
+	  	<div class="header">
+	  		<div class="period">
+	  			Año {{$year}}
+	  		</div>
+	  		Presupuesto Planeado
+	  	</div>
+		<div>
+			<div class="budget">
+				<b>{{$budget->name}}</b>				
+			</div>
+				{{$budget->description}}
 		</div>
-		<p>{{$budget->description}}</p>	
-		<hr>
-		<table class="table" width="100%" style="font-size: 0.7em;">
+		<table width="100%">
 			<thead>
-				<th width="20%" style="text-align: center;">
-					<form class="form-inline" action="{{route('budgets_year', ['budget' => $budget->id])}}" method="GET" style="font-size: 1.2em;">
-					{{csrf_field()}}
-						<input type="hidden" name="budget_id" value="{{$budget->id}}">
-						<label for="budgetYear"><b>AÑO </b></label>
-						<select class="form-control" name="budgetYear">
-							@for($i = 0 ; $i < 5 ; $i++)
-							<option value="{{date("Y") + $i}}"
-							@if($year != null)
-								@if($year == (date("Y") + $i))
-									selected="true"
-								@endif
-							@endif
-							>{{date("Y") + $i}}</option>
-							@endfor
-						</select>
-						<button type="submit" name="button" class="btn btn-info glyphicon glyphicon-refresh"></button>
-					</form>
-				</th>
-				<th style="text-align: center;">
-					Ene
-				</th>
-				<th style="text-align: center;">
-					Feb
-				</th>
-				<th style="text-align: center;">
-					Mar
-				</th>
-				<th style="text-align: center;">
-					Abr
-				</th>
-				<th style="text-align: center;">
-					May
-				</th>
-				<th style="text-align: center;">
-					Jun
-				</th>
-				<th style="text-align: center;">
-					Jul
-				</th>
-				<th style="text-align: center;">
-					Ago
-				</th>
-				<th style="text-align: center;">
-					Sep
-				</th>
-				<th style="text-align: center;">
-					Oct
-				</th>
-				<th style="text-align: center;">
-					Nov
-				</th>
-				<th style="text-align: center;">
-					Dic
-				</th>
-				<th style="text-align: center;">
-					<b>TOTAL</b>
-				</th>
+				<tr>
+					<th>
+						
+					</th>
+					<th>
+						Ene
+					</th>
+					<th>
+						Feb
+					</th>
+					<th>
+						Mar
+					</th>
+					<th>
+						Abr
+					</th>
+					<th>
+						May
+					</th>
+					<th>
+						Jun
+					</th>
+					<th>
+						Jul
+					</th>
+					<th>
+						Ago
+					</th>
+					<th>
+						Sep
+					</th>
+					<th>
+						Oct
+					</th>
+					<th>
+						Nov
+					</th>
+					<th>
+						Dic
+					</th>
+					<th>
+						TOTAL
+					</th>
+				</tr>
 			</thead>
 			<tbody style="text-align: right;">
 			<?php
@@ -118,8 +163,8 @@
 				?>
 						<tr>
 							<!-- Nombre de la Categoría -->
-							<td colspan="13" style="text-align: left; font-size: 1.5em;">
-								<b><a href="{{route('categories_edit', ['category' => $category->id, 'year' => $year])}}">{{$category->name}}</a></b>
+							<td colspan="13" class="category">
+								{{$category->name}}
 							</td>
 							<td>
 							</td>
@@ -127,20 +172,10 @@
 						@foreach($items as $item)
 							@if($item->category_id == $category->id)
 							<?php $sumItem = 0; ?>
-							<form>
 								<tr>
 								<!-- Descripción del item -->
 									<td style="text-align: left;">
-									<a href="{{route('items_edit', ['item' => $item->id, 'budget' => $budget->id, 'year' => $year])}}">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-										@if(strlen($item->description) > 25)
-										<span data-toggle="tooltip" title="{{$item->description}}">
-											{{substr($item->description, 0, 25)}}...
-										</span>
-										@else
 										{{$item->description}}
-										@endif
 									</td>
 									<!-- Valor de Enero -->
 									<td>
@@ -306,7 +341,6 @@
 									?>
 									</td>
 								</tr>
-							</form>
 							@endif
 						@endforeach
 						<tr
@@ -346,7 +380,7 @@
 							?>
 						@endif
 						>
-							<td>
+							<td class="totales-title">
 								<b>Subtotal</b>
 							</td>
 							<!-- Subtotal Enero -->
@@ -409,7 +443,7 @@
 					</td>
 				</tr>
 					<tr class="info">
-						<td>
+						<td class="totales-title">
 							<b>TOTAL</b>
 						</td>
 						<!-- Subtotal Enero -->
@@ -469,5 +503,5 @@
 					</tr>
 			</tbody>
 		</table>
-	</div>
-@endsection
+	</body>
+</html>

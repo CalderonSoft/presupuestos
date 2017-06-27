@@ -7,9 +7,9 @@
 @section('list')
 	@foreach($budgets as $budget)
 		  <div class="col-md-12">
-		    <h2>
+		    <div style="font-size: 2em;">
 		      <a href="{{route('reports_history', ['budget' => $budget->id])}}" data-toggle="tooltip" title="{{$budget->description}}">{{$budget->name}}</a>
-		    </h2>
+		    </div>
 				<hr>
 		  </div>
 	@endforeach

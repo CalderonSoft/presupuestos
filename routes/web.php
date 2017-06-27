@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 	// PDFs
 	Route::name('pdfs_history')->get('/history_pdf/{budget}', 'PdfController@history');
+	Route::name('pdfs_plannedExecuted')->get('/plannedExecuted_pdf/{budget}/{year}/{month}', 'PdfController@plannedExecuted');
+	Route::name('pdfs_budget')->get('/budget_pdf/{budget}/{year}', 'PdfController@budget');
 
 });
 

@@ -3,19 +3,47 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Reporte Historial de Movimientos</title>
     <style type="text/css">
-    	th {
-    		background-color: #447BD4;
-    		color: white;
-    		text-align: center;
+    	body {
+    		font-family: sans-serif;
+    	}
+
+	    th {
+			background-color: #447BD4;
+			color: white;
+			text-align: center;
+			padding: 5px;
     	}
 
     	.header{
 			background-color: #447BD4;
 			color: white;
-			font-size: 2em;
+			font-size: 1.5em;
 			font-weight: bolder;
 			text-align: right;
 			padding: 15px;
+    	}
+    	.budget{
+    		font-size: 1.3em;
+    		margin-top: 15px;
+    	}
+    	.totales-row{
+    		font-weight: bold;
+    	}
+    	.total-row{
+    		font-size: 1.5em;
+    	}
+    	.totales-title{
+    		text-align: right;
+    		padding-right: 10px;
+    	}
+    	.success{
+    		background-color: #dff0d8;
+    	}
+    	.info{
+    		background-color: #d9edf7;
+    	}
+    	.danger{
+    		background-color: #f2dede;
     	}
     </style>
   </head>
@@ -24,20 +52,20 @@
   		Reporte Historial de Movimientos
   	</div>
 	<div>
-		<h2>
-			<b>{{$budget->name}}</b>
-		</h2>
-		<p>{{$budget->description}}</p>
+		<div class="budget">
+			<b>{{$budget->name}}</b>				
+		</div>
+			{{$budget->description}}
 	</div>
-		<table>
+		<table width="100%">
 			<thead>
 			<tr>
 				<th style="width: 90px;">Fecha</th>
 				<th style="min-width: 90px;">Categoría</th>
 				<th style="min-width: 90px;">Item</th>
 				<th>Descripción</th>
-				<th style=" width: 110px;">Ingresos</th>
-				<th style=" width: 110px;">Egresos</th>
+				<th style=" width: 120px;">Ingresos</th>
+				<th style=" width: 120px;">Egresos</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -84,8 +112,8 @@
 					@endif
 				</tr>
 				@endforeach
-				<tr style="font-weight: bold;">
-					<td colspan="4" style="text-align: right;">
+				<tr class="totales-row">
+					<td colspan="4" class="totales-title">
 						Subtotales
 					</td>
 					<!-- Total Ingresos -->
@@ -102,8 +130,8 @@
 
 					</td>
 				</tr>
-				<tr style="font-weight: bold; font-size: 1.5em;">
-					<td colspan="4" style="text-align: right;">
+				<tr class="totales-row total-row">
+					<td colspan="4" class="totales-title">
 						TOTAL
 					</td>
 					<td style="text-align: center;" class="info" colspan="2">
