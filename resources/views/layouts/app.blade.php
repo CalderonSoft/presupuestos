@@ -139,9 +139,13 @@
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>          
+          @php
+            $role = Auth::user()->role;
+          @endphp
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENÚ</li>
+            @if($role != 3)
             <li class="active treeview">
               <a href="#">
                 <i class="glyphicon glyphicon-usd"></i> <span>Presupuestos</span> <i class="fa fa-angle-left pull-right"></i>
@@ -153,17 +157,30 @@
                 <li><a href="{{route('budgets_indexExecute')}}"><i class="fa fa-bullseye"></i>Ejecutar Presupuesto</a></li>
               </ul>
             </li>
-            <li class="treeview">
+            @endif
+            <li class="treeview @if($role == 3) active @endif">
               <a href="#">
                 <i class="glyphicon glyphicon-stats"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+                @if($role == 3)
+                <li><a href=""><i class="fa fa-bullseye"></i>Presupuesto planeado</a></li>
+                @endif
                 <li><a href="{{route('reports_index', ['report' => 1])}}"><i class="fa fa-bullseye"></i>Historial de movimientos</a></li>
-              </ul>
-              <ul class="treeview-menu">
                 <li><a href="{{route('reports_index', ['report' => 2])}}"><i class="fa fa-bullseye"></i>Planeado Vs Ejecutado</a></li>
               </ul>
             </li>
+            @if($role == 1)
+            <li class="treeview">
+              <a href="#">
+                <i class="glyphicon glyphicon-cog"></i> <span>Administrar</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{route('users.index')}}"><i class="fa fa-bullseye"></i>Administrar Usuarios</a></li>
+                <li><a href=""><i class="fa fa-bullseye"></i>Administrar Presupuestos</a></li>
+              </ul>
+            </li>
+            @endif
           </ul>
         </section>
         <!-- /.sidebar -->

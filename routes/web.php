@@ -14,6 +14,10 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 
+	// Users
+	Route::resource('users', 'UserController');
+	Route::name('users_create')->post('/user', 'Auth\RegisterController@createUser');
+
 	// Budgets
 	Route::resource('budgets', 'BudgetController');
 

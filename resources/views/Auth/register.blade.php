@@ -54,6 +54,10 @@
                   <input type="radio" name="genre" value="mujer"> Mujer
           </div>  
 
+          <div class="form-group has-feedback">
+              <!-- <label>Género:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                  <input type="hidden" name="role" value="2">
+          </div>
 
            <div class="form-group has-feedback form-group{{ $errors->has('email') ? ' has-error' : '' }}">
              <label>E-mail</label>
