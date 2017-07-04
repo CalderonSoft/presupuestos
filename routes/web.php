@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function(){
 	// Users
 	Route::resource('users', 'UserController');
 	Route::name('users_create')->post('/user', 'Auth\RegisterController@createUser');
+	Route::name('users.changePass')->post('/user/changePass', 'UserController@changePass');
 
 	// Budgets
 	Route::resource('budgets', 'BudgetController');

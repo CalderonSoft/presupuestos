@@ -33,9 +33,7 @@
 				@foreach($users as $user)
 					<tr>
 						<td style="">
-							<a href="">
-								{{$user->name}}
-					      	</a>
+							{{$user->name}}
 						</td>
 						<td>
 							{{$user->email}}
@@ -45,17 +43,17 @@
 							@if($role == 1)
 								Administrador
 							@elseif($role == 2)
-								Gestor de Presupuestos
+								Gestor de presupuestos
 							@else
-								De consulta
+								Usuario de consulta
 							@endif
 						</td>
 						<td width="160px">
 							<div class="pull-left">
-							<a href="" class="btn btn-default" style="">Editar</a>
+							<a href="{{route('users.edit', ['user' => $user->id])}}" class="btn btn-default" style="">Editar</a>
 							</div>		
 							<div class="pull-right">
-							<form action="" method="POST">
+							<form action="{{route('users.destroy', ['user' => $user->id])}}" method="POST">
 				            {{ csrf_field() }}
 				            {{ method_field('DELETE') }}
 				            <button type="submit" class="btn btn-default">Eliminar</button>

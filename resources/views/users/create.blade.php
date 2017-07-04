@@ -40,19 +40,13 @@
 
 			          <div class="form-group has-feedback form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 			            <label>Contraseña</label>
-			            <input id="password" type="password" class="form-control" name="password" required>
+			            <input id="password" type="text" class="form-control" name="password" required>
 
 			            @if ($errors->has('password'))
 			                <span class="help-block">
 			                    <strong>{{ $errors->first('password') }}</strong>
 			                </span>
 			            @endif
-			            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-			          </div>
-
-			          <div class="form-group has-feedback">
-			            <label>Confirmar Contraseña</label>
-			            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 			            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 			          </div>
 

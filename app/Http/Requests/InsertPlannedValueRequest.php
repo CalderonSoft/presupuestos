@@ -36,8 +36,6 @@ class InsertPlannedValueRequest extends FormRequest
             'oct' => 'numeric|min:0',
             'nov' => 'numeric|min:0',
             'dic' => 'numeric|min:0'
-            // 'cedula' => 'required|numeric|unique:personas|integer|min:000000|max:99999999',
-            // 'cedula' =>  'numeric|required|unique:personas|min:100000|max:99999999',
         ];
     }
 }
