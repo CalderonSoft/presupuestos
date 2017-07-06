@@ -41,6 +41,7 @@ $app->singleton(
     Budgets\Exceptions\Handler::class
 );
 
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

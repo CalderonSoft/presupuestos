@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class PdfController extends Controller
 {
-    
+
     public function history(Budget $budget)
     {
     	$value = new Value;
@@ -36,7 +36,9 @@ class PdfController extends Controller
 
         $view = \View::make('pdf.plannedExecuted', compact('budget', 'categories', 'items', 'pValues', 'rValues', 'year', 'month'))->render();
         $pdf = \PDF::loadHTML($view);
-        return $pdf->setPaper('legal', 'landscape')->stream('PlannedExecuted_Report.pdf');
+        // $pdf = App::make('dompdf.wrapper');
+        // $pdf->loadHTML($view);
+        return $pdf->setPaper('legal', 'landscape')->setWarnings(false)->stream('PlannedExecuted_Report.pdf');
     }
 
     public function budget(Budget $budget, int $year)
@@ -46,11 +48,9 @@ class PdfController extends Controller
         $items = $item->getItemsByBudget($budget);
         $value = new Value;
         $values = $value->getValuesByBudget($budget, $year);
-
+        // Generación de PDF
         $view = \View::make('pdf.plannedBudget', compact('budget', 'categories', 'items', 'values', 'year'))->render();
         $pdf = \PDF::loadHTML($view);
         return $pdf->setPaper('legal', 'landscape')->stream('Planned_Budget.pdf');
-
-        // return view('budgets.show')->with(['budget' => $budget, 'categories' => $categories, 'items' => $items, 'values' => $values, 'year' => $year]);
     }
 }
