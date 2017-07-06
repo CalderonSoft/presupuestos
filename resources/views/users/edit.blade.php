@@ -40,6 +40,7 @@
 	        @php
 	        	$role = $user->role;
 	        @endphp
+	        @if(Auth::user()->role == 1)
 			<div class="form-group">
 	          	<label>Rol</label>
 	          	<br>
@@ -59,6 +60,7 @@
 		        @endif
 		        > Usuario de consulta
 	        </div>
+	        @endif
 	        <small class="pull-right">
 			<div class="form-group">
 				<input type="submit" class="btn btn-primary" value="Guardar" />

@@ -6,10 +6,18 @@
 
 @section('action')
 	| Planeación
+	@php
+		$owner = false;
+		if(Auth::user()->id == $budget->user_id) {
+			$owner = true;
+		}
+	@endphp	
 	<div class="pull-right">
 		<a href="{{route('pdfs_budget', ['budget' => $budget->id, 'year' => $year])}}" class="btn btn-info" style="margin-right: 10px">Generar PDF</a>
-		<a href="" data-toggle="modal" data-target="#createCategory" class="btn btn-success">Agregar Categoría</a>
-        	@include('categories.create')
+		@if($owner)
+			<a href="" data-toggle="modal" data-target="#createCategory" class="btn btn-success">Agregar Categoría</a>
+	        	@include('categories.create')
+		@endif
 	</div>
 @endsection
 
@@ -119,7 +127,11 @@
 						<tr>
 							<!-- Nombre de la Categoría -->
 							<td colspan="13" style="text-align: left; font-size: 1.5em;">
-								<b><a href="{{route('categories_edit', ['category' => $category->id, 'year' => $year])}}">{{$category->name}}</a></b>
+								@if($owner)
+									<b><a href="{{route('categories_edit', ['category' => $category->id, 'year' => $year])}}">{{$category->name}}</a></b>
+								@else
+									<b>{{$category->name}}</b>
+								@endif
 							</td>
 							<td>
 							</td>
@@ -131,9 +143,11 @@
 								<tr>
 								<!-- Descripción del item -->
 									<td style="text-align: left;">
+									@if($owner)
 									<a href="{{route('items_edit', ['item' => $item->id, 'budget' => $budget->id, 'year' => $year])}}">
 										<span class="glyphicon glyphicon-pencil"></span>
 									</a>
+									@endif
 										@if(strlen($item->description) > 25)
 										<span data-toggle="tooltip" title="{{$item->description}}">
 											{{substr($item->description, 0, 25)}}...

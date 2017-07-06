@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+@if(Auth::user()->role == 1)
 	<div class="login-box-body">
 		<!-- <div class="row"> -->
 		<div class="row">			
@@ -62,6 +63,11 @@
 				        </td>
 					</tr>
 				@endforeach
+					<tr>
+						<td colspan="4" style="text-align: right;">
+							{{$users->links()}}
+						</td>
+					</tr>
 				</table>
 			</div>			
 			
@@ -81,4 +87,7 @@
 			</div>
 		</div>
 	</div>
+@else
+	@include('layouts._restrictedAccess')
+@endif
 @endsection

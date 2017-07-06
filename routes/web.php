@@ -24,8 +24,11 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::name('budgets_show')->get('/budget/{budget}/{year}', 'BudgetController@show');
 	Route::name('budgets_year')->get('/budget/{budget}', 'BudgetController@setYear');
+	Route::name('budgets_indexAdmin')->get('/adminBudget', 'BudgetController@indexAdmin');
 	Route::name('budgets_indexExecute')->get('/budget_real', 'BudgetController@indexExecute');
 	Route::name('budgets_execute')->get('/budget_real/{budget}', 'BudgetController@execute');
+	Route::name('budgets_editOwner')->get('/budget_editOwner/{budget}', 'BudgetController@editOwner');
+	Route::name('budgets_updateOwner')->post('/budget_updateOwner', 'BudgetController@updateOwner');
 
 	// Categories
 	Route::resource('categories', 'CategoryController');

@@ -5,7 +5,7 @@
 		<b>¡No tienes permisos para ver esta página!</b>
 		<br>
 		<small>
-			Consulta con el Administrador del sistma.
+			Consulta con el Administrador del sistema.
 		</small>
 	</h2>
 </div>

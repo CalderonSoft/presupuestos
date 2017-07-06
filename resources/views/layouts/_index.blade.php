@@ -1,11 +1,11 @@
 @extends ('layouts.app')
 
 @section('class')
-	Mis Presupuestos
+	@yield('title')
 @endsection
 
 @section('action')
-	| Reportes @yield('reportName')
+	@yield('subtitle')
 @endsection
 
 @section('content')

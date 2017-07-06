@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+@if(Auth::user()->role != 3)
 <div class="login-box-body">
 			<form id="editCategory" action="{{ route('categories.update', ['category' => $category->id]) }}" method="POST">
 			{{method_field('PUT')}}
@@ -77,4 +78,7 @@
 		</ul>
 	</div>
 </div>
+@else
+	@include('layouts._restrictedAccess')
+@endif
 @endsection

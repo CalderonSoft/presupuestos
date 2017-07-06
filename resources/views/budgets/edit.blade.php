@@ -9,5 +9,9 @@
 @endsection
 
 @section('content')
-	@include('budgets._form', ['budget' => $budget])
+	@if(Auth::user()->id == $budget->user_id)
+		@include('budgets._form', ['budget' => $budget])
+	@else
+		@include('layouts._restrictedAccess');
+	@endif
 @endsection

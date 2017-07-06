@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+@if(Auth::user()->role != 3)
 	 <div class="login-box-body">
 			<form id="editItem" action="{{route('items.update', ['item' => $item->id])}}" method="POST">
 			{{method_field('PUT')}}
@@ -43,4 +44,7 @@
 			@include('values._insert')
 		@endif
 </div>
+@else
+	@include('layouts._restrictedAccess')
+@endif
 @endsection

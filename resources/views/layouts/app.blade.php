@@ -164,7 +164,7 @@
               </a>
               <ul class="treeview-menu">
                 @if($role == 3)
-                <li><a href=""><i class="fa fa-bullseye"></i>Presupuesto planeado</a></li>
+                <li><a href="{{route('budgets.index')}}"><i class="fa fa-bullseye"></i>Presupuesto planeado</a></li>
                 @endif
                 <li><a href="{{route('reports_index', ['report' => 1])}}"><i class="fa fa-bullseye"></i>Historial de movimientos</a></li>
                 <li><a href="{{route('reports_index', ['report' => 2])}}"><i class="fa fa-bullseye"></i>Planeado Vs Ejecutado</a></li>
@@ -177,7 +177,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{route('users.index')}}"><i class="fa fa-bullseye"></i>Administrar Usuarios</a></li>
-                <li><a href=""><i class="fa fa-bullseye"></i>Administrar Presupuestos</a></li>
+                <li><a href="{{route('budgets_indexAdmin')}}"><i class="fa fa-bullseye"></i>Administrar Presupuestos</a></li>
               </ul>
             </li>
             @endif

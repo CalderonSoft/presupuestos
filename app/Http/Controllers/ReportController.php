@@ -11,9 +11,12 @@ class ReportController extends Controller
 {
     public function index(int $report)
     {
-
-        $user = \Auth::user();
-        $budgets = $user->budgets->reverse();
+        if (\Auth::user()->role == 2) {
+            $user = \Auth::user();
+            $budgets = $user->budgets->reverse();
+        } else {
+            $budgets = Budget::with('user')->orderBy('name')->paginate(10);
+        }  
         switch ($report) {
             case 1:
                 return view('reports.indexHistory', compact('budgets'));

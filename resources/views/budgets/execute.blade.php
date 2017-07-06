@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(Auth::user()->id == $budget->user_id)
 	<h1>
 		<b>{{$budget->name}}</b>
 	</h1>
@@ -55,6 +56,7 @@
 			</table>
 		</div>
 	</div>
-
-
+@else
+	@include('layouts._restrictedAccess')
+@endif
 @endsection

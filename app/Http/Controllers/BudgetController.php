@@ -2,6 +2,7 @@
 
 namespace Budgets\Http\Controllers;
 
+use Budgets\User;
 use Budgets\Item;
 use Budgets\Budget;
 use Budgets\Category;
@@ -16,9 +17,12 @@ class BudgetController extends Controller
 	public function index()
     {
         if (\Auth::user()) {
-            // $budgets = Budget::with('user')->where('user_id', \Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
-            $user = \Auth::user();
-            $budgets = $user->budgets->reverse();
+            if (\Auth::user()->role == 2) {
+                $user = \Auth::user();
+                $budgets = $user->budgets->reverse();
+            } else {
+                $budgets = Budget::with('user')->orderBy('name')->paginate(10);
+            }            
             return view('budgets.index', compact('budgets'));
         } else {
             return view('welcome');
@@ -26,11 +30,19 @@ class BudgetController extends Controller
     }
 
     public function indexExecute()
-        {
-            $user = \Auth::user();
-            $budgets = $user->budgets->reverse();
-    		return view('budgets.indexExecute', compact('budgets'));
-        }
+    {
+        $user = \Auth::user();
+        $budgets = $user->budgets->reverse();
+        return view('budgets.indexExecute', compact('budgets'));
+    }
+
+    public function indexAdmin()
+    {
+        $budget = new Budget;
+        $budgets = $budget->getButgetsWithUser();
+        // return $budgets;
+		return view('budgets.indexAdmin', compact('budgets'));
+    }
 
     public function show(Budget $budget, int $year)
     {
@@ -55,6 +67,12 @@ class BudgetController extends Controller
         return view('budgets.edit', compact('budget'));
 	}
 
+    public function editOwner(Budget $budget)
+    {
+        $users = User::where('role', '!=', '3')->orderBy('name')->paginate(10);
+        return view('budgets.editOwner', compact('budget', 'users'));
+    }
+
 	public function store(CreateBudgetRequest $request)
 	{
 		$budget = new Budget;
@@ -74,6 +92,14 @@ class BudgetController extends Controller
 		session()->flash('message', '¡Presupuesto actualizado!');
 		return redirect()->route('budgets.index');
 	}
+
+    public function updateOwner(Request $request)
+    {
+        $budget = Budget::find($request->get('budget_id'));
+        $budget->user_id = $request->get('owner');    
+        $budget->save();    
+        return redirect()->route('budgets_indexAdmin');
+    }
 
 	public function destroy(Budget $budget)
     {

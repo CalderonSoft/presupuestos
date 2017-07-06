@@ -1,7 +1,10 @@
 @extends ('layouts.app')
 
 @section('class')
-	Mis Presupuestos
+	@if(Auth::user()->role == 2)
+	Mis 
+	@endif
+	Presupuestos
 @endsection
 
 @section('action')
@@ -9,6 +12,10 @@
 @endsection
 
 @section('content')
+	@php
+		$authRole = Auth::user()->role;
+		$authId = Auth::user()->id;
+	@endphp
 	<div class="login-box-body">
 	@if($budgets->isempty())
 		<h2 style="text-align: center; margin-top: 100px; min-height: 200px;">
@@ -30,38 +37,50 @@
 									{{$budget->name}}
 						      	</a>
 							</td>
-							<td width="145px">
-								<div class="pull-left">
-								<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-default" style="">Editar</a>
-								</div>		
-								<div class="pull-right">
-								<form action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
-					            {{ csrf_field() }}
-					            {{ method_field('DELETE') }}
-					            <button type="submit" class="btn btn-default">Eliminar</button>
-					        	</form>
-					        	</div>
-					        </td>
+							@if($authId == $budget->user_id)
+								<td width="145px">
+									<div class="pull-left">
+									<a href="{{route('budgets.edit', ['budget' => $budget->id])}}" class="btn btn-default" style="">Editar</a>
+									</div>		
+									<div class="pull-right">
+									<form action="{{route('budgets.destroy', ['budget' => $budget->id])}}" method="POST">
+						            {{ csrf_field() }}
+						            {{ method_field('DELETE') }}
+						            <button type="submit" class="btn btn-default">Eliminar</button>
+						        	</form>
+						        	</div>
+						        </td>
+					        @endif
 						</tr>
 					</table>
 					<hr>
 				</div>
 			@endforeach
-			
-			<div class="col-md-3">
-				<div
-					style="
-					position: fixed;
-					right: 40px;
-					bottom: 30px;
-					z-index: 9999;
-					">
-					<a href="" data-toggle="modal" data-target="#createBudget">
-						<img src="{{asset('dist/icons/plus_24.png')}}" data-toggle="tooltip" title="Crea un nuevo Presupuesto">
-					</a>
+
+			@if($authRole != 2)
+				<div class="pull-right">
+					{{$budgets->links()}}
+					<br>
+					<br>
 				</div>
-				@include('budgets.createModal')
-			</div>
+			@endif
+			
+			@if($authRole != 3)
+				<div class="col-md-3">
+					<div
+						style="
+						position: fixed;
+						right: 40px;
+						bottom: 30px;
+						z-index: 9999;
+						">
+						<a href="" data-toggle="modal" data-target="#createBudget">
+							<img src="{{asset('dist/icons/plus_24.png')}}" data-toggle="tooltip" title="Crea un nuevo Presupuesto">
+						</a>
+					</div>
+					@include('budgets.createModal')
+				</div>
+			@endif
 		</div>
 	</div>
 @endsection

@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+@if(Auth::user()->role != 3)
 	<div class="login-box-body">
 	@if($budgets->isempty())
 		<h2 style="text-align: center; margin-top: 100px; min-height: 200px;">
@@ -40,4 +41,7 @@
 			@endforeach
 		</div>
 	</div>
+@else
+	@include('layouts._restrictedAccess')
+@endif
 @endsection

@@ -1,7 +1,11 @@
 @extends ('layouts._index')
 
-@section('reportName')
-	| Planeado Vs Ejecutado
+@section('title')
+	Mis Presupuestos
+@endsection
+
+@section('subtitle')
+	| Reportes | Planeado Vs Ejecutado
 @endsection
 
 @section('list')
@@ -13,5 +17,10 @@
 				<hr>
 		  </div>
 	@endforeach
+	@if(Auth::user()->role != 2)
+		<div class="pull-right">
+			{{$budgets->links()}}
+		</div>
+	@endif
 @endsection
 

@@ -8,7 +8,9 @@
 	| Historial de movimientos
 	<div class="pull-right">
 		<a href="{{route('pdfs_history', ['budget' => $budget->id])}}" class="btn btn-info" style="margin-right: 10px">Generar PDF</a>
-		<a href="{{route('budgets_execute', ['budget' => $budget->id])}}" class="btn btn-success" style="margin-right: 10px">Registrar movimiento</a>
+		@if(Auth::user()->id == $budget->user_id)
+			<a href="{{route('budgets_execute', ['budget' => $budget->id])}}" class="btn btn-success" style="margin-right: 10px">Registrar movimiento</a>
+		@endif
 	</div>
 @endsection
 
